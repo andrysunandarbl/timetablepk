@@ -6,19 +6,12 @@
 </head>
 <body>
 
-<table width="100%">
-	<tr>
-		<td width="200"></td>
-		<td><span wicket:id="feedback" /></td>
-	</tr>
-	<tr>
-		<td>
-			MENU
-			
-		</td>
-		<td><wicket:child /></td>
-	</tr>
-</table>
+<form wicket:id="loginForm">
+	Zaloguj się:<br />
+	<input type="text" wicket:id="login" />
+	<input type="password" wicket:id="password" />
+	<input type="submit" wicket:id="submit" />
+</form>
 
 </body>
 </html>
