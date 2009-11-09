@@ -20,6 +20,7 @@ public class User implements Serializable {
 	private String password;
 	private Role role;
 	private String description;
+	private Boolean active = true;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -78,5 +79,13 @@ public class User implements Serializable {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public Boolean getActive() {
+		return active;
+	}
+
+	public void setActive(Boolean active) {
+		this.active = active;
 	}
 }

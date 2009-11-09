@@ -26,5 +26,6 @@
 		<mapping class="eu.paniw.timetable.data.Room" />
 		<mapping class="eu.paniw.timetable.data.Teacher" />
 		<mapping class="eu.paniw.timetable.data.Unit" />
+		<mapping class="eu.paniw.timetable.data.User" />
 	</session-factory>
 </hibernate-configuration>
