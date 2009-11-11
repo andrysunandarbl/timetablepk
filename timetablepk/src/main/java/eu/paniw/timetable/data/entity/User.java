@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data;
+package eu.paniw.timetable.data.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

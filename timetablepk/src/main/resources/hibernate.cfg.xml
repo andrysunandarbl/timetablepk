@@ -16,12 +16,8 @@
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<property name="hibernate.validator.apply_to_ddl">true</property>
 		<property name="hibernate.cache.use_query_cache">false</property>
-		
-		<mapping class="eu.paniw.timetable.data.Ability" />
-		<mapping class="eu.paniw.timetable.data.Classification" />
+
 		<mapping class="eu.paniw.timetable.data.Course" />
-		<mapping class="eu.paniw.timetable.data.Degree" />
-		<mapping class="eu.paniw.timetable.data.Grid" />
 		<mapping class="eu.paniw.timetable.data.Group" />
 		<mapping class="eu.paniw.timetable.data.Room" />
 		<mapping class="eu.paniw.timetable.data.Teacher" />

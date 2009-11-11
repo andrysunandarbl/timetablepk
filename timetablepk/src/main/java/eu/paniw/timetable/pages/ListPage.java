@@ -12,6 +12,7 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import eu.paniw.timetable.Application;
 
 public abstract class ListPage<T> extends BasePage {
 	protected WebMarkupContainer wmc;
@@ -28,7 +29,7 @@ public abstract class ListPage<T> extends BasePage {
 	@SuppressWarnings("unchecked")
 	protected void init() {
 		if(objectClass == null || provider == null || columns == null) {
-			throw new RestartResponseAtInterceptPageException(BasePage.class);
+			throw new RestartResponseAtInterceptPageException(((Application)getApplication()).getErrorPage());
 		}
 
 		wmc = new WebMarkupContainer("listCon");

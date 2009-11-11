@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data;
+package eu.paniw.timetable.data.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,9 +21,9 @@ public class Teacher implements Serializable {
 	private static final long serialVersionUID = -4001775565444440479L;
 	private Long id;
 	private String name;
-	// private List<Degree> degree;
+	private String degree;
 	private String surname;
-	private List<Ability> abilities = new ArrayList<Ability>();
+	private List<Course> courses = new ArrayList<Course>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -43,13 +43,13 @@ public class Teacher implements Serializable {
 		this.name = name;
 	}
 
-	// public List<Degree> getDegree() {
-	// return degree;
-	// }
-	//
-	// public void setDegree(List<Degree> degree) {
-	// this.degree = degree;
-	// }
+	public String getDegree() {
+		return degree;
+	}
+
+	public void setDegree(String degree) {
+		this.degree = degree;
+	}
 
 	public String getSurname() {
 		return surname;
@@ -60,15 +60,15 @@ public class Teacher implements Serializable {
 	}
 
 	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Ability.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH,
+	@ManyToMany(targetEntity = Course.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH,
 			CascadeType.PERSIST})
-	@JoinTable(name = "Teacher_Ability", joinColumns = {@JoinColumn(name = "teacher_id")}, inverseJoinColumns = {@JoinColumn(name = "ability_id")})
+	@JoinTable(name = "Ability", joinColumns = {@JoinColumn(name = "teacher_id")}, inverseJoinColumns = {@JoinColumn(name = "course_id")})
 	@Fetch(FetchMode.SUBSELECT)
-	public List<Ability> getAbilities() {
-		return abilities;
+		public List<Course> getCourses() {
+		return courses;
 	}
 
-	public void setAbilities(List<Ability> abilities) {
-		this.abilities = abilities;
+	public void setCourses(List<Course> courses) {
+		this.courses = courses;
 	}
 }
