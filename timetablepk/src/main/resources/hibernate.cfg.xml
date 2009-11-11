@@ -17,11 +17,11 @@
 		<property name="hibernate.validator.apply_to_ddl">true</property>
 		<property name="hibernate.cache.use_query_cache">false</property>
 
-		<mapping class="eu.paniw.timetable.data.Course" />
-		<mapping class="eu.paniw.timetable.data.Group" />
-		<mapping class="eu.paniw.timetable.data.Room" />
-		<mapping class="eu.paniw.timetable.data.Teacher" />
-		<mapping class="eu.paniw.timetable.data.Unit" />
-		<mapping class="eu.paniw.timetable.data.User" />
+		<mapping class="eu.paniw.timetable.data.entity.Course" />
+		<mapping class="eu.paniw.timetable.data.entity.Group" />
+		<mapping class="eu.paniw.timetable.data.entity.Room" />
+		<mapping class="eu.paniw.timetable.data.entity.Teacher" />
+		<mapping class="eu.paniw.timetable.data.entity.Unit" />
+		<mapping class="eu.paniw.timetable.data.entity.User" />
 	</session-factory>
 </hibernate-configuration>
