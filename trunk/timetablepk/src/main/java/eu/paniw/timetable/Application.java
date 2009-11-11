@@ -1,6 +1,7 @@
 package eu.paniw.timetable;
 
 import net.databinder.hib.DataApplication;
+import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
@@ -13,14 +14,15 @@ import eu.paniw.timetable.pages.HomePage;
 import eu.paniw.timetable.pages.LoginPage;
 
 public class Application extends DataApplication {
+	private Class<? extends Page> errorPage = HomePage.class;
 
 	@Override
 	protected void init() {
 		super.init();
 
-		getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(new UserAuthorizer()));
+		//getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(new UserAuthorizer()));
 		getApplicationSettings().setAccessDeniedPage(LoginPage.class);
-		
+
 		// set output default markup encoding
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 
@@ -47,5 +49,9 @@ public class Application extends DataApplication {
 	@Override
 	public Class<? extends WebPage> getHomePage() {
 		return HomePage.class;
+	}
+
+	public Class<? extends Page> getErrorPage() {
+		return errorPage;
 	}
 }

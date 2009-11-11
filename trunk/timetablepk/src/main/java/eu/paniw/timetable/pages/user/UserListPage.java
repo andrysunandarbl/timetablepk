@@ -9,7 +9,7 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvid
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
-import eu.paniw.timetable.data.User;
+import eu.paniw.timetable.data.entity.User;
 import eu.paniw.timetable.pages.ListPage;
 
 @MountPath(path = "user/list")

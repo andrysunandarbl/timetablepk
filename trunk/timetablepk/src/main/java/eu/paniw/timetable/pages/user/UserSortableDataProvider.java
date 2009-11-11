@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.List;
 import net.databinder.models.hib.HibernateListModel;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
-import eu.paniw.timetable.data.User;
+import eu.paniw.timetable.data.entity.User;
 
 public class UserSortableDataProvider implements Serializable {
 	private static final long serialVersionUID = -1246704563274459067L;
@@ -15,7 +15,7 @@ public class UserSortableDataProvider implements Serializable {
 
 	public UserSortableDataProvider() {
 		items = new HibernateListModel<User>(User.class).getObject();
-	}
+	} 
 
 	public List<User> getItems() {
 		return items;

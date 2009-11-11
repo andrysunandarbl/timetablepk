@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data;
+package eu.paniw.timetable.data.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,18 +11,18 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
-public class Ability implements Serializable {
-	private static final long serialVersionUID = -6218048469498822901L;
+public class Course implements Serializable {
+	private static final long serialVersionUID = -4448354550961699651L;
 	private Long id;
 	private String name;
-	private List<Course> courses = new ArrayList<Course>();
+	private Boolean lecture;
+	private List<Unit> units = new ArrayList<Unit>();
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 
 	@Id
@@ -43,21 +43,29 @@ public class Ability implements Serializable {
 		this.name = name;
 	}
 
-	@LazyCollection(LazyCollectionOption.TRUE)
-	@OneToMany(mappedBy = "ability", cascade = {CascadeType.MERGE, CascadeType.REFRESH,
-			CascadeType.PERSIST})
-	public List<Course> getCourses() {
-		return courses;
+	public Boolean getLecture() {
+		return lecture;
 	}
 
-	public void setCourses(List<Course> courses) {
-		this.courses = courses;
+	public void setLecture(Boolean lecture) {
+		this.lecture = lecture;
 	}
 
 	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Teacher.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH,
-			CascadeType.PERSIST})
-	@JoinTable(name = "Teacher_Ability", joinColumns = {@JoinColumn(name = "ability_id")}, inverseJoinColumns = {@JoinColumn(name = "teacher_id")})
+	@ManyToMany(targetEntity = Unit.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+	@JoinTable(name = "Grid", joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name = "unit_id")})
+	@Fetch(FetchMode.SUBSELECT)
+	public List<Unit> getUnits() {
+		return units;
+	}
+
+	public void setUnits(List<Unit> units) {
+		this.units = units;
+	}
+
+	@LazyCollection(LazyCollectionOption.TRUE)
+	@ManyToMany(targetEntity = Teacher.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+	@JoinTable(name = "Ability", joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name = "teacher_id")})
 	@Fetch(FetchMode.SUBSELECT)
 	public List<Teacher> getTeachers() {
 		return teachers;
