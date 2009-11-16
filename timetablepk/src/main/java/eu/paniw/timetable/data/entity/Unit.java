@@ -64,8 +64,7 @@ public class Unit implements Serializable {
 	}
 
 	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Group.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-	@JoinTable(name = "Classification", joinColumns = {@JoinColumn(name = "unit_id")}, inverseJoinColumns = {@JoinColumn(name = "group_id")})
+	@OneToMany(mappedBy="unit")
 	@Fetch(FetchMode.SUBSELECT)
 	public List<Group> getGroups() {
 		return groups;
