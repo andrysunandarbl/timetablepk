@@ -22,7 +22,7 @@ public class Group implements Serializable {
 	private Long id;
 	private String name;
 	private Integer count;
-	private List<Unit> units = new ArrayList<Unit>();
+	private Unit unit;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -50,12 +50,11 @@ public class Group implements Serializable {
 		this.count = count;
 	}
 
-	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Unit.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-	@JoinTable(name = "Classification", joinColumns = {@JoinColumn(name = "group_id")}, inverseJoinColumns = {@JoinColumn(name = "unit_id")})
-	@Fetch(FetchMode.SUBSELECT)
-	public List<Unit> getUnits() {
-		return units;
+	@ManyToOne
+	@JoinColumn("unit_id")
+	@Fetch(FetchMode.SELECT)
+	public Unit getUnit() {
+		return unit;
 	}
 
 	public void setUnits(List<Unit> units) {
