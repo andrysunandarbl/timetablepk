@@ -1,0 +1,6 @@
+TODO - dokumentacja
+
+- funkcjonalnosci
+- przypadki uzycia use case
+- u¿ytkownicy i ich mozliwosci
+- opis jak korzstac (instalacja)
