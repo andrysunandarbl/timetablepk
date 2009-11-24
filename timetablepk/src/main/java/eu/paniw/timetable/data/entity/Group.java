@@ -51,13 +51,13 @@ public class Group implements Serializable {
 	}
 
 	@ManyToOne
-	@JoinColumn("unit_id")
+	@JoinColumn(name="unit_id")
 	@Fetch(FetchMode.SELECT)
 	public Unit getUnit() {
 		return unit;
 	}
 
-	public void setUnits(List<Unit> units) {
-		this.units = units;
+	public void setUnits(Unit unit) {
+		this.unit = unit;
 	}
 }
