@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data.entity;
+package eu.paniw.timetable.domain.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;

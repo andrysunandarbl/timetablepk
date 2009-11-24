@@ -1,11 +1,11 @@
 package eu.paniw.timetable;
 
+import junit.framework.TestCase;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.DefaultComponentSafeNamingStrategy;
-import eu.paniw.timetable.data.entity.User;
-import junit.framework.TestCase;
+import eu.paniw.timetable.domain.entity.User;
 
 public class RealDataTest extends TestCase {
 	private Session session;

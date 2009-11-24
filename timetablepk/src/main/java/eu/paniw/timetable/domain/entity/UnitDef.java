@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data.entity;
+package eu.paniw.timetable.domain.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,22 +8,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.NotNull;
 
 @Entity
-public class Unit implements Serializable {
-	private static final long serialVersionUID = -1865001406662382358L;
-	private Long id;
-	private String name;
-	private Integer count;
-	private List<Course> courses = new ArrayList<Course>();
-	private List<Group> groups = new ArrayList<Group>();
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class UnitDef implements Serializable {
+	private static final long serialVersionUID = -6487548106318178077L;
+	protected Long id;
+	protected String name;
+	protected Integer count;
+	protected UnitDef parent;
+	protected List<Course> courses = new ArrayList<Course>();
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,6 +40,7 @@ public class Unit implements Serializable {
 		this.id = id;
 	}
 
+	@NotNull
 	public String getName() {
 		return name;
 	}
@@ -53,7 +59,7 @@ public class Unit implements Serializable {
 
 	@LazyCollection(LazyCollectionOption.TRUE)
 	@ManyToMany(targetEntity = Course.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-	@JoinTable(name = "Grid", joinColumns = {@JoinColumn(name = "unit_id")}, inverseJoinColumns = {@JoinColumn(name = "course_id")})
+	@JoinTable(name = "Grid", joinColumns = {@JoinColumn(name = "unitdef_id")}, inverseJoinColumns = {@JoinColumn(name = "course_id")})
 	@Fetch(FetchMode.SUBSELECT)
 	public List<Course> getCourses() {
 		return courses;
@@ -63,14 +69,16 @@ public class Unit implements Serializable {
 		this.courses = courses;
 	}
 
-	@LazyCollection(LazyCollectionOption.TRUE)
-	@OneToMany(mappedBy="unit")
-	@Fetch(FetchMode.SUBSELECT)
-	public List<Group> getGroups() {
-		return groups;
+	public UnitDef getParent() {
+		return parent;
 	}
 
-	public void setGroups(List<Group> groups) {
-		this.groups = groups;
+	public void setParent(UnitDef parent) {
+		this.parent = parent;
+	}
+	
+	@Transient
+	public String getUnifyName() {
+		return name;
 	}
 }

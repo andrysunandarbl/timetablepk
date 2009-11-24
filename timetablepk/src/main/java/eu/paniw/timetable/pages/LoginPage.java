@@ -17,7 +17,7 @@ import org.hibernate.QueryException;
 import org.hibernate.criterion.Restrictions;
 import org.wicketstuff.annotation.mount.MountPath;
 import eu.paniw.timetable.AuthSession;
-import eu.paniw.timetable.data.entity.User;
+import eu.paniw.timetable.domain.entity.User;
 
 @MountPath(path = "login")
 public class LoginPage extends WebPage {

@@ -1,5 +1,6 @@
 package eu.paniw.timetable.pages;
 
+import java.io.Serializable;
 import java.util.List;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
@@ -9,35 +10,36 @@ import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxFal
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
-import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import eu.paniw.timetable.AbstractSortableDataProvider;
 import eu.paniw.timetable.Application;
 
-public abstract class ListPage<T> extends BasePage {
+public abstract class ListPage<T extends Serializable> extends BasePage {
 	protected WebMarkupContainer wmc;
 	protected DataTable<T> dataTable;
 	protected Class<T> objectClass = null;
-	protected SortableDataProvider<T> provider;
 	protected List<IColumn<T>> columns = null;
+	protected AbstractSortableDataProvider<T> asdp;
 
 	public ListPage(PageParameters param, Class<T> objectClass) {
 		super(param);
 		this.objectClass = objectClass;
-	}
-
-	@SuppressWarnings("unchecked")
-	protected void init() {
-		if(objectClass == null || provider == null || columns == null) {
-			throw new RestartResponseAtInterceptPageException(((Application)getApplication()).getErrorPage());
-		}
 
 		wmc = new WebMarkupContainer("listCon");
 		wmc.setOutputMarkupId(true);
 		add(wmc);
+	}
 
-		dataTable = new DataTable<T>("dataTable", (IColumn<T>[]) columns.toArray(new IColumn[columns.size()]), provider,
+	@SuppressWarnings("unchecked")
+	protected void init() {
+		if(objectClass == null || asdp == null || columns == null) {
+			throw new RestartResponseAtInterceptPageException(((Application) getApplication()).getErrorPage());
+		}
+
+		dataTable = new DataTable<T>("dataTable", (IColumn<T>[]) columns.toArray(new IColumn[columns.size()]), asdp,
 				ROW_PER_PAGE);
+		dataTable.setOutputMarkupId(true);
 		dataTable.addTopToolbar(new AjaxNavigationToolbar(dataTable) {
 			private static final long serialVersionUID = 755632704320037727L;
 
@@ -55,7 +57,7 @@ public abstract class ListPage<T> extends BasePage {
 				};
 			}
 		});
-		dataTable.addTopToolbar(new AjaxFallbackHeadersToolbar(dataTable, provider));
+		dataTable.addTopToolbar(new AjaxFallbackHeadersToolbar(dataTable, asdp));
 		dataTable.setOutputMarkupId(true);
 		wmc.add(dataTable);
 	}
