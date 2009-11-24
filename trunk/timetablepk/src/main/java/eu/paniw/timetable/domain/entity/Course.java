@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data.entity;
+package eu.paniw.timetable.domain.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
@@ -22,7 +23,7 @@ public class Course implements Serializable {
 	private Long id;
 	private String name;
 	private Boolean lecture;
-	private List<Unit> units = new ArrayList<Unit>();
+	private List<UnitDef> units = new ArrayList<UnitDef>();
 	private List<Teacher> teachers = new ArrayList<Teacher>();
 
 	@Id
@@ -52,14 +53,14 @@ public class Course implements Serializable {
 	}
 
 	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Unit.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
-	@JoinTable(name = "Grid", joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name = "unit_id")})
+	@ManyToMany(targetEntity = UnitDef.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+	@JoinTable(name = "Grid", joinColumns = {@JoinColumn(name = "course_id")}, inverseJoinColumns = {@JoinColumn(name = "unitdef_id")})
 	@Fetch(FetchMode.SUBSELECT)
-	public List<Unit> getUnits() {
+	public List<UnitDef> getUnits() {
 		return units;
 	}
 
-	public void setUnits(List<Unit> units) {
+	public void setUnits(List<UnitDef> units) {
 		this.units = units;
 	}
 
@@ -73,5 +74,10 @@ public class Course implements Serializable {
 
 	public void setTeachers(List<Teacher> teachers) {
 		this.teachers = teachers;
+	}
+
+	@Transient
+	public String getUnifyName() {
+		return name;
 	}
 }

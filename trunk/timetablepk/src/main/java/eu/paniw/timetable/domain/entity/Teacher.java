@@ -1,4 +1,4 @@
-package eu.paniw.timetable.data.entity;
+package eu.paniw.timetable.domain.entity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Transient;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
@@ -70,5 +71,10 @@ public class Teacher implements Serializable {
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
+	}
+	
+	@Transient
+	public String getUnifyName() {
+		return name;
 	}
 }

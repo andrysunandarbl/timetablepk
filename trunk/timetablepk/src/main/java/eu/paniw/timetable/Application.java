@@ -5,7 +5,6 @@ import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
-import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
 import org.apache.wicket.markup.html.WebPage;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.DefaultComponentSafeNamingStrategy;

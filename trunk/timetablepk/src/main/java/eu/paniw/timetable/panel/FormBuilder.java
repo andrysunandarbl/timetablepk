@@ -33,8 +33,8 @@ public class FormBuilder<T> extends DataForm<T> {
 		builder.add(wmc);
 	}
 
-	public void addComponent(Component component, String labelTxt) {
-		FormBuilderItem<T> item = new FormBuilderItem<T>(component, labelTxt);
+	public void addComponent(Component component, String labelKey) {
+		FormBuilderItem<T> item = new FormBuilderItem<T>(component, getLocalizer().getString(labelKey, component, labelKey));
 		addComponent(item);
 	}
 

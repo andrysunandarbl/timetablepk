@@ -8,14 +8,16 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.wicketstuff.annotation.mount.MountPath;
-import eu.paniw.timetable.data.entity.User;
+import org.wicketstuff.annotation.strategy.MountMixedParam;
+import eu.paniw.timetable.domain.entity.User;
 import eu.paniw.timetable.pages.EditPage;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "user/edit")
+@MountPath(path = "user/edit", alt = "user/add")
+@MountMixedParam(parameterNames = {"id"})
 public class UserEditPage extends EditPage<User> {
 	public UserEditPage(PageParameters param) {
-		super(param, User.class, UserListPage.class, UserListPage.class);
+		super(param, User.class, UserViewPage.class, UserListPage.class);
 		init();
 	}
 
@@ -23,30 +25,32 @@ public class UserEditPage extends EditPage<User> {
 	protected void init() {
 		super.init();
 
-		TextField<String> userNameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(), "userName"));
+		TextField<String> userNameTF = new TextField<String>("formfield",
+				new PropertyModel<String>(getFormModel(), "userName"));
 		userNameTF.setRequired(true);
 		userNameTF.add(StringValidator.minimumLength(3));
-		builder.addComponent(userNameTF, getLocalizer().getString("user.userName", this, "user.userName"));
+		builder.addComponent(userNameTF, "user.userName");
 
 		if(id == null) {
 			PasswordTextField passwordTextField = new PasswordTextField("formfield", new PropertyModel<String>(getFormModel(),
 					"password"));
 			passwordTextField.setRequired(true);
-			builder.addComponent(passwordTextField, getLocalizer().getString("user.password", this, "user.password"));
+			builder.addComponent(passwordTextField, "user.password");
 		}
 
-		TextField<String> firstnameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(), "firstname"));
-		builder.addComponent(firstnameTF, getLocalizer().getString("user.firstname", this, "user.firstname"));
+		TextField<String> firstnameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(),
+				"firstname"));
+		builder.addComponent(firstnameTF, "user.firstname");
 
 		TextField<String> surnameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(), "surname"));
-		builder.addComponent(surnameTF, getLocalizer().getString("user.surname", this, "user.surname"));
+		builder.addComponent(surnameTF, "user.surname");
 
 		TextArea<String> descriptionTA = new TextArea<String>("formfield", new PropertyModel<String>(getFormModel(),
 				"description"));
-		builder.addComponent(descriptionTA, getLocalizer().getString("user.description", this, "user.description"));
+		builder.addComponent(descriptionTA, "user.description");
 
 		CheckBox activeCB = new CheckBox("formfield", new PropertyModel<Boolean>(getFormModel(), "active"));
-		builder.addComponent(activeCB, getLocalizer().getString("user.active", this, "user.active"));
+		builder.addComponent(activeCB, "user.active");
 	}
 
 	@Override
