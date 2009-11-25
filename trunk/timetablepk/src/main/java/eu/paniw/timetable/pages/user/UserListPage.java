@@ -41,9 +41,11 @@ public class UserListPage extends ListPage<User> {
 			@Override
 			public void populateItem(Item<ICellPopulator<User>> cellItem, String componentId, IModel<User> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
+						new BookmarkablePageLink<Page>("link", UserViewPage.class, new PageParametersTool("id", rowModel
+								.getObject().getId()).getPP()), "list.view").addLink(
 						new BookmarkablePageLink<Page>("link", UserEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "Edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "Delete"));
+								.getObject().getId()).getPP()), "list.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
 			}
 		});
 
