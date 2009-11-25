@@ -21,9 +21,9 @@ import org.hibernate.annotations.LazyCollectionOption;
 public class Teacher implements Serializable {
 	private static final long serialVersionUID = -4001775565444440479L;
 	private Long id;
-	private String name;
-	private String degree;
+	private String firstname;
 	private String surname;
+	private String degree;
 	private List<Course> courses = new ArrayList<Course>();
 
 	@Id
@@ -36,12 +36,12 @@ public class Teacher implements Serializable {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstname() {
+		return firstname;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
 	}
 
 	public String getDegree() {
@@ -61,20 +61,19 @@ public class Teacher implements Serializable {
 	}
 
 	@LazyCollection(LazyCollectionOption.TRUE)
-	@ManyToMany(targetEntity = Course.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH,
-			CascadeType.PERSIST})
+	@ManyToMany(targetEntity = Course.class, cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
 	@JoinTable(name = "Ability", joinColumns = {@JoinColumn(name = "teacher_id")}, inverseJoinColumns = {@JoinColumn(name = "course_id")})
 	@Fetch(FetchMode.SUBSELECT)
-		public List<Course> getCourses() {
+	public List<Course> getCourses() {
 		return courses;
 	}
 
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-	
+
 	@Transient
 	public String getUnifyName() {
-		return name;
+		return degree + " " + firstname + " " + surname;
 	}
 }

@@ -25,31 +25,29 @@ public class UserEditPage extends EditPage<User> {
 	protected void init() {
 		super.init();
 
-		TextField<String> userNameTF = new TextField<String>("formfield",
-				new PropertyModel<String>(getFormModel(), "userName"));
+		TextField<String> userNameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "userName"));
 		userNameTF.setRequired(true);
 		userNameTF.add(StringValidator.minimumLength(3));
 		builder.addComponent(userNameTF, "user.userName");
 
 		if(id == null) {
-			PasswordTextField passwordTextField = new PasswordTextField("formfield", new PropertyModel<String>(getFormModel(),
+			PasswordTextField passwordTextField = new PasswordTextField("item", new PropertyModel<String>(getFormModel(),
 					"password"));
 			passwordTextField.setRequired(true);
 			builder.addComponent(passwordTextField, "user.password");
 		}
 
-		TextField<String> firstnameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(),
-				"firstname"));
+		TextField<String> firstnameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "firstname"));
 		builder.addComponent(firstnameTF, "user.firstname");
 
-		TextField<String> surnameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(), "surname"));
+		TextField<String> surnameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "surname"));
 		builder.addComponent(surnameTF, "user.surname");
 
-		TextArea<String> descriptionTA = new TextArea<String>("formfield", new PropertyModel<String>(getFormModel(),
+		TextArea<String> descriptionTA = new TextArea<String>("item", new PropertyModel<String>(getFormModel(),
 				"description"));
 		builder.addComponent(descriptionTA, "user.description");
 
-		CheckBox activeCB = new CheckBox("formfield", new PropertyModel<Boolean>(getFormModel(), "active"));
+		CheckBox activeCB = new CheckBox("item", new PropertyModel<Boolean>(getFormModel(), "active"));
 		builder.addComponent(activeCB, "user.active");
 	}
 
