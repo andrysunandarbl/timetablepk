@@ -23,5 +23,7 @@
 		<mapping class="eu.paniw.timetable.domain.entity.Teacher" />
 		<mapping class="eu.paniw.timetable.domain.entity.Unit" />
 		<mapping class="eu.paniw.timetable.domain.entity.User" />
+		<mapping class="eu.paniw.timetable.domain.app.Menu" />
+		<mapping class="eu.paniw.timetable.domain.app.MenuItem" />
 	</session-factory>
 </hibernate-configuration>
