@@ -47,5 +47,4 @@ public class Room implements Serializable {
 	public void setLecture(Boolean lecture) {
 		this.lecture = lecture;
 	}
-
 }

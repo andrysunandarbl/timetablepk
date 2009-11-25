@@ -6,6 +6,6 @@ public class SelectPanel<T> extends DataPanel<T> {
 	private static final long serialVersionUID = 726051133970069406L;
 
 	public SelectPanel() {
-		super("formitem");
+		super("item");
 	}
 }

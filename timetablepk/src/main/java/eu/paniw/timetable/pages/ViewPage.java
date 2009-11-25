@@ -1,5 +1,6 @@
 package eu.paniw.timetable.pages;
 
+import java.io.Serializable;
 import net.databinder.models.hib.HibernateObjectModel;
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
@@ -7,7 +8,7 @@ import org.apache.wicket.RestartResponseAtInterceptPageException;
 import eu.paniw.timetable.Application;
 import eu.paniw.timetable.panel.ViewBuilder;
 
-public abstract class ViewPage<T> extends BasePage {
+public abstract class ViewPage<T extends Serializable> extends BasePage {
 	protected Class<T> clazz;
 	protected HibernateObjectModel<T> hom;
 	protected Class<? extends Page> listPage;

@@ -24,7 +24,7 @@ public class UnitEditPage extends UnitDefEditPage<Unit> {
 	protected void init() {
 		super.init();
 
-		Palette<Course> coursesP = new Palette<Course>("formitem", new PropertyModel<List<Course>>(getFormModel(), "courses"),
+		Palette<Course> coursesP = new Palette<Course>("item", new PropertyModel<List<Course>>(getFormModel(), "courses"),
 				new HibernateListModel<Course>(Course.class), new ChoiceRenderer<Course>("unifyName", "id"), 5, false);
 		builder.addComponent(coursesP, "course.units");
 	}

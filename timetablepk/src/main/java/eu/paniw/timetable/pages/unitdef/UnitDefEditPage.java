@@ -19,12 +19,12 @@ public abstract class UnitDefEditPage<T extends UnitDef> extends EditPage<T> {
 	protected void init() {
 		super.init();
 
-		TextField<String> nameTF = new TextField<String>("formfield", new PropertyModel<String>(getFormModel(), "name"));
+		TextField<String> nameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "name"));
 		nameTF.setRequired(true);
 		nameTF.add(StringValidator.minimumLength(3));
 		builder.addComponent(nameTF, "group.name");
 
-		TextField<Integer> countTF = new TextField<Integer>("formfield", new PropertyModel<Integer>(getFormModel(), "count"));
+		TextField<Integer> countTF = new TextField<Integer>("item", new PropertyModel<Integer>(getFormModel(), "count"));
 		builder.addComponent(countTF, "group.count");
 	}
 
