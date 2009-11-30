@@ -1,0 +1,161 @@
+Time table PK
+
+Strona Utworzona na potrzeby prezentacji projektu.
+
+
+=Dokumentacja projektowa Planu zajęć=
+ 
+==Spis Treści==
+
+<wiki:toc />
+
+===wstęp===
+
+Format Wikipedii jest często wykorzystywany do dokumentowania projektów.<br/>
+Proste polecenia, oraz nieskomplikowany interfejs przyczyniają się do wykorzystywania tego formatu.
+
+Pliki stron zapisywane są z rozszerzeniem `*`.wiki
+Aby przekształcić ten plik na html można użyć konwertera napisanego w języku ruby.
+
+===Podstawowa składnia Wikipedii===
+
+Tekst formatujemy za pomocą symboli lub znaczników. Aby przejść do nowego akapitu
+
+Należy pozostawić wolną linijkę.
+
+Kursywę uzyskujemy poprzez umieszczenie tekstu miedzy znakami `'_' np: _Kursywa_`<br/>
+_Kursywa_
+
+Analogicznie poprzez zastosowanie znaków gwiazdki {{{*pogrubiony*}}} uzyskamy tekst pogrubiony.
+
+*Pogrubiony*
+
+Analogicznie:
+
+{{{~~Przekreślenie~~}}} 
+
+~~Przekreślenie~~
+
+{{{zwykły tekst,,indeks dolny,,}}}
+
+zwykły tekst,,indeks dolny,,
+
+{{{zwykły tekst^indeks górny^}}}
+
+zwykły tekst^indeks górny^
+
+==Listy i Numerowanie==
+
+Listy tworzymy za pomocą znaku ` *`:
+
+Lista:
+ * Pierwszy poziom
+  * Punkt pierwszy 
+  * Punkt drugi
+  * Punkt trzeci
+
+{{{
+Lista:
+ * Pierwszy poziom
+  * Punkt pierwszy 
+  * Punkt drugi
+  * Punkt trzeci
+}}}
+
+Listę ponumerowaną tworzymy analogicznie za pomocą ` #`
+
+Lista Numerowana:
+ # A
+  # AA 
+  # AB
+  # AC
+ # B
+{{{
+ # A
+  # AA 
+  # AB
+  # AC
+ # B
+}}}
+
+==Nagłówki==
+
+Nagłówki tworzymy za pomocą znaku `=`
+
+=Nagłówek 1=
+
+==Nagłówek 2==
+
+===Nagłówek 3===
+
+{{{
+=Nagłówek 1=
+
+==Nagłówek 2==
+
+===Nagłówek 3===
+}}}
+
+==Tabele==
+
+Tabele tworzymy układając je ze znaczników `|` :
+
+|| numer || nazwisko ||
+|| 1. || Paniw ||
+|| 2. || Kościelniak ||
+|| 3. || Derecki ||
+
+==Linki==
+
+Linki do strony wewnętrznej w tej aplikacji Wikipedii uzyskuje się poprzez `[NazwaStrony]`
+
+[WikiTestPage]
+
+Linki zewnętrze są automatycznie umieszczane po dodaniu do strony adresu np:
+
+http://www.onet.pl
+
+Do linków można też dodawać obrazki:
+
+`[http://code.google.com/ http://code.google.com/images/code_sm.png]`
+
+[http://code.google.com/ http://code.google.com/images/code_sm.png]
+
+w tym przypadku obrazek będzie linkiem do strony.
+
+==Komentarze==
+
+Komentować możemy kod wikipedii w taki sposób aby był on nie brany pod uwagę podczas 
+interpretacji, jak również w sposób który wyświetli składnie Wikipedii lub innego języka. 
+
+{{{
+<wiki:comment>
+tego tekstu nie zobaczymy po wyrenderowaniu strony.
+</wiki:comment>
+}}}
+
+W ten sposób zobaczymy kod Wikipedii:
+
+{{{
+{{{
+==Nagłowek 1== 
+|| tabela 1 || kom 2 ||
+|| tabela 1 || kom 3 ||
+}}}
+`<u>podkreślenie</u>`
+}}}
+
+kod źródłowy może być kolorowany automatycznie:
+
+<source lang="java">
+workbook.createSheet(sheetName);
+		sheet = workbook.getSheet(sheetName);
+		for(int i=0;i<60;i++){
+			sheet.createRow(i);
+		}
+		row = sheet.getRow(0);
+		cell = row.createCell(0, HSSFCell.CELL_TYPE_STRING);
+		HSSFRichTextString textString = new HSSFRichTextString("godzina");
+		cell.setCellValue(textString);
+</source>
+{{{
