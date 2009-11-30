@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "menu/menu", alt = "menu")
+@MountPath(path = "menu")
 public class MenuListPage extends ListPage<Menu> {
 	public MenuListPage(PageParameters param) {
 		super(param, Menu.class);
@@ -33,6 +33,8 @@ public class MenuListPage extends ListPage<Menu> {
 		columns.add(new PropertyColumn<Menu>(new Model<String>("ID"), "id", "id"));
 		columns.add(new PropertyColumn<Menu>(new Model<String>("Name"), "name", "name"));
 		columns.add(new PropertyColumn<Menu>(new Model<String>("Menu position"), "menuPosition", "menuPosition"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>("Position"), "position", "position"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>("Address"), "address", "address"));
 		columns.add(new AbstractColumn<Menu>(new Model<String>("Actions")) {
 			private static final long serialVersionUID = -5779057576370409825L;
 
