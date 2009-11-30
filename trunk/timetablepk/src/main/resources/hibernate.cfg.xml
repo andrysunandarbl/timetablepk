@@ -18,12 +18,12 @@
 		<property name="hibernate.cache.use_query_cache">false</property>
 
 		<mapping class="eu.paniw.timetable.domain.entity.Course" />
-		<mapping class="eu.paniw.timetable.domain.entity.Group" />
 		<mapping class="eu.paniw.timetable.domain.entity.Room" />
 		<mapping class="eu.paniw.timetable.domain.entity.Teacher" />
+		<mapping class="eu.paniw.timetable.domain.entity.UnitDef" />
 		<mapping class="eu.paniw.timetable.domain.entity.Unit" />
+		<mapping class="eu.paniw.timetable.domain.entity.Group" />
 		<mapping class="eu.paniw.timetable.domain.entity.User" />
 		<mapping class="eu.paniw.timetable.domain.app.Menu" />
-		<mapping class="eu.paniw.timetable.domain.app.MenuItem" />
 	</session-factory>
 </hibernate-configuration>

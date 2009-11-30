@@ -7,6 +7,7 @@ import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
+import eu.paniw.timetable.Application;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.domain.app.MenuPosition;
 import eu.paniw.timetable.pages.EditPage;
@@ -53,6 +54,8 @@ public class MenuEditPage extends EditPage<Menu> {
 
 	@Override
 	public void onAfterSubmit() {
+		((Application) getApplication()).getMenuLoader().refreshMenus();
+
 		responseParam = new PageParametersTool("id", getFormModel().getObject().getId()).getPP();
 	}
 }

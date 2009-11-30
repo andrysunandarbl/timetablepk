@@ -1,0 +1,183 @@
+body, * {
+	margin: 0 auto;
+	float: none;
+	font-size: 12px;
+	font-family: Verdana, Times New Roman, sans-serif;
+	line-height: 17px;
+	color: #000000;
+}
+
+body {
+	background-color: #FFFFFF;
+	background-image: url('img/background.jpg');
+	background-repeat: repeat-x;
+	text-align: center;
+}
+
+div#container {
+	width: 900px;
+	text-align: center;
+}
+
+div#top {
+	width: 100%;
+	height: 105px;
+	background-color: transparent;
+}
+
+div#logo {
+	float: left;
+	width: 60px;
+	height: 100%;
+	background-image: url('img/logo.jpg');
+	background-repeat: no-repeat;
+	background-position: 0px 26px;
+	background-color: transparent;
+}
+
+div#logoPkTxt {
+	float: left;
+	width: 405px;
+	height: 100%;
+	background-image: url('img/logoPkTxt.png');
+	background-repeat: no-repeat;
+	background-position: 0px 25px;
+	background-color: transparent;
+}
+
+div#logoAppTxt {
+	float: right;
+	width: 320px;
+	height: 100%;
+	background-image: url('img/logoAppTxt.png');
+	background-repeat: no-repeat;
+	background-position: 130px 0px;
+	background-color: transparent;
+}
+
+div#topMenu {
+	float: left;
+	clear: both;
+	background-color: #FBB700;
+	width: 900px;
+	height: 20px;
+	text-align: center;
+}
+
+div#topMenu a {
+	padding: 0px 20px 0px 20px;	
+}
+
+div#middle {
+	float: left;
+	clear: both;
+	background-color: #FFFFFF;
+	width: 100%;
+}
+
+div#menu {
+	float: left;
+	width: 170px;
+}
+
+div#menu a {
+	clear: both;
+	float: left;
+	padding: 2px 0px 4px 12px;
+}	
+	
+div#content {
+	float: right;
+	width: 709px;
+	border-left: 1px dotted #001530;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: left;
+	vertical-align: top;
+	padding-bottom: 20px;
+}
+
+div#bottom {
+	float: left;
+	clear: both;
+	width: 100%;
+	background-color: transparent;
+	font-size: 10px;
+}
+
+/* for table */
+table.listPage {
+	width: 679px;
+	border-collapse: collapse;
+	background-color: transparent;
+	border: 1px solid #c1c9d5;
+}
+
+table.listPage td, table.listPage th {
+	padding: 5.5px;
+	text-align: left;	
+}
+
+table.listPage * {
+	vertical-align: top;
+}
+
+table.listPage tr.navigation {
+	text-align: left;
+	background-color: #e3efff;
+}
+
+table.listPage tr.navigation * {
+	font-size: 10px;
+	padding: 0px 1px 0px 1px;
+}
+
+table.listPage tr.headers th {
+	background-color: #3c567c;
+	height: 28px;
+}
+
+table.listPage tr.headers * {	
+	font-size: 13px;
+	text-decoration: none;
+	padding-bottom: 4px;
+	color: #FFFFFF;
+}
+
+table.listPage tr.headers th.wicket_orderNone {
+	
+}
+
+table.listPage tr.headers th.wicket_orderNone a.wicket_orderNone {
+
+}
+
+table.listPage tr.headers th.wicket_orderUp {
+	background-image: url('img/up.png');
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-color: #778cac;
+}
+
+table.listPage tr.headers th.wicket_orderUp a.wicket_orderUp {
+
+}
+
+table.listPage tr.headers th.wicket_orderDown  {
+	background-image: url('img/down.png');
+	background-repeat: no-repeat;
+	background-position: right top;
+	background-color: #778cac;
+}
+
+table.listPage tr.headers th.wicket_orderDown a.wicket_orderDown {
+}
+
+table.listPage tr.even {
+	background-color: #ebe6ff;
+}
+
+table.listPage tr.odd {
+	background-color: #FFFFFF;
+}
+/* for table end */

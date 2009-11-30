@@ -9,7 +9,6 @@ import org.apache.wicket.extensions.markup.html.repeater.util.SortParam;
 import org.apache.wicket.extensions.markup.html.repeater.util.SortableDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
-import org.hibernate.Criteria;
 
 public abstract class AbstractSortableDataProvider<T extends Serializable> extends SortableDataProvider<T> {
 	private static final long serialVersionUID = 1568453344987171341L;
@@ -19,19 +18,7 @@ public abstract class AbstractSortableDataProvider<T extends Serializable> exten
 
 	public AbstractSortableDataProvider(Class<T> clazz, CriteriaBuilder criteriaBuilder) {
 		this.clazz = clazz;
-
-		if(criteriaBuilder != null) {
-			this.criteriaBuilder = criteriaBuilder;
-		} else {
-			this.criteriaBuilder = new CriteriaBuilder() {
-				private static final long serialVersionUID = -831507853164249659L;
-
-				@Override
-				public void build(Criteria criteria) {
-
-				}
-			};
-		}
+		this.criteriaBuilder = criteriaBuilder;
 
 		initItems();
 	}

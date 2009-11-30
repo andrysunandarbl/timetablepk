@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "menu")
+@MountPath(path = "menu", alt="menus")
 public class MenuListPage extends ListPage<Menu> {
 	public MenuListPage(PageParameters param) {
 		super(param, Menu.class);
