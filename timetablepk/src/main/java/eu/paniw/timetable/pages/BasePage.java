@@ -5,6 +5,7 @@ import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInst
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.panel.FeedbackPanel;
 import org.apache.wicket.util.string.StringValueConversionException;
+import eu.paniw.timetable.Application;
 
 @AuthorizeInstantiation({"Application"})
 public abstract class BasePage extends WebPage {
@@ -24,7 +25,7 @@ public abstract class BasePage extends WebPage {
 				exc.printStackTrace();
 			}
 		}
-		
+
 		initialize();
 	}
 
@@ -32,5 +33,7 @@ public abstract class BasePage extends WebPage {
 		feedback = new FeedbackPanel("feedback");
 		feedback.setOutputMarkupId(true);
 		add(feedback);
+
+		((Application) getApplication()).getMenuLoader().addMenuPanel(BasePage.this);
 	}
 }

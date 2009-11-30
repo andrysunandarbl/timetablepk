@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Transient;
 
 @Entity
-public class Menu implements Serializable {
+public class Menu implements Serializable, Comparable<Menu> {
 	private static final long serialVersionUID = -3802342871162168829L;
 	private Long id;
 	private String name;
@@ -64,5 +64,10 @@ public class Menu implements Serializable {
 	@Transient
 	public String getUnifyName() {
 		return name;
+	}
+
+	@Override
+	public int compareTo(Menu menu) {
+		return this.position.compareTo(menu.getPosition());
 	}
 }

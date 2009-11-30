@@ -15,7 +15,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "unit")
+@MountPath(path = "unit", alt="units")
 public class UnitListPage extends UnitDefListPage<Unit> {
 	public UnitListPage(PageParameters param) {
 		super(param, Unit.class);

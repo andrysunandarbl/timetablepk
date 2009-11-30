@@ -2,6 +2,7 @@ package eu.paniw.timetable.pages;
 
 import java.io.Serializable;
 import java.util.List;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -12,6 +13,9 @@ import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
+import org.apache.wicket.markup.repeater.Item;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import eu.paniw.timetable.AbstractSortableDataProvider;
 import eu.paniw.timetable.Application;
 
@@ -38,7 +42,17 @@ public abstract class ListPage<T extends Serializable> extends BasePage {
 		}
 
 		dataTable = new DataTable<T>("dataTable", (IColumn<T>[]) columns.toArray(new IColumn[columns.size()]), asdp,
-				ROW_PER_PAGE);
+				ROW_PER_PAGE) {
+					private static final long serialVersionUID = 3731678422086406680L;
+
+					@Override
+					protected Item<T> newRowItem(String id, int index, IModel<T> model) {
+						Item item = super.newRowItem(id, index, model);
+						item.add(new AttributeModifier("class", true, new Model(index % 2 == 0 ? "odd"
+								: "even")));
+						return item;
+					}
+		};
 		dataTable.setOutputMarkupId(true);
 		dataTable.addTopToolbar(new AjaxNavigationToolbar(dataTable) {
 			private static final long serialVersionUID = 755632704320037727L;

@@ -14,23 +14,21 @@ import eu.paniw.timetable.pages.LoginPage;
 
 public class Application extends DataApplication {
 	private Class<? extends Page> errorPage = HomePage.class;
+	private MenuLoader menuLoader;
 
 	@Override
 	protected void init() {
 		super.init();
 
-		//getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(new UserAuthorizer()));
+		// getSecuritySettings().setAuthorizationStrategy(new
+		// RoleAuthorizationStrategy(new UserAuthorizer()));
 		getApplicationSettings().setAccessDeniedPage(LoginPage.class);
-
-		// set output default markup encoding
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
+		getApplicationSettings().setInternalErrorPage(getHomePage());
+		getApplicationSettings().setPageExpiredErrorPage(getHomePage());
 
-		// getApplicationSettings().setInternalErrorPage(getHomePage());
-		// getExceptionSettings().setUnexpectedExceptionDisplay(IExceptionSettings.SHOW_INTERNAL_ERROR_PAGE);
-		// getApplicationSettings().setPageExpiredErrorPage(HomePage.class);
-
-		// create nice URLs
 		new AnnotatedMountScanner().scanPackage("eu.paniw").mount(this);
+		menuLoader = new MenuLoader();
 	}
 
 	@Override
@@ -52,5 +50,9 @@ public class Application extends DataApplication {
 
 	public Class<? extends Page> getErrorPage() {
 		return errorPage;
+	}
+
+	public MenuLoader getMenuLoader() {
+		return menuLoader;
 	}
 }

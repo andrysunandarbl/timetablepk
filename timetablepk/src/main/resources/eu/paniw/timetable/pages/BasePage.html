@@ -1,24 +1,41 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TimeTablePK - base page</title>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+  <meta name="Author" content="Grzegorz Paniw" />
+
+  <title>TYTUŁ</title>
+
+  <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
 <body>
 
-<table width="100%">
-	<tr>
-		<td width="200"></td>
-		<td><span wicket:id="feedback" /></td>
-	</tr>
-	<tr>
-		<td>
-			MENU
-			
-		</td>
-		<td><wicket:child /></td>
-	</tr>
-</table>
+<div id="container">
+	<div id="top">
+		<div id="logo"></div>
+		<div id="logoPkTxt"></div>
+		<div id="logoAppTxt"></div>
+	</div>
+	
+	<div id="topMenu">
+		<span wicket:id="menuTop" />
+	</div>
+	<div id="middle">
+		<div id="menu">
+			<span wicket:id="menuMain" />
+		</div>
+		<div id="content">
+			<span wicket:id="feedback" /><br /><br />
+			<wicket:child />
+		</div>
+	</div>
+	
+	<div id="bottom">
+		<span wicket:id="menuBottom" /><br />
+		Copyright &copy; 2009 Grzegorz Paniw
+	</div>
+</div>
 
 </body>
 </html>
