@@ -8,7 +8,7 @@ import org.wicketstuff.annotation.strategy.MountMixedParam;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.pages.ViewPage;
 
-@MountPath(path = "menu/menu/view")
+@MountPath(path = "menu/view")
 @MountMixedParam(parameterNames = {"id"})
 public class MenuViewPage extends ViewPage<Menu> {
 	public MenuViewPage(PageParameters param) {
@@ -20,7 +20,7 @@ public class MenuViewPage extends ViewPage<Menu> {
 	protected void init() {
 		super.init();
 
-		Label idL = new Label("item", new PropertyModel<String>(hom, "id"));
+		Label idL = new Label("item", new PropertyModel<Long>(hom, "id"));
 		builder.addComponent(idL, "menu.id");
 
 		Label nameL = new Label("item", new PropertyModel<String>(hom, "name"));
@@ -28,5 +28,11 @@ public class MenuViewPage extends ViewPage<Menu> {
 
 		Label menuPositionL = new Label("item", new PropertyModel<String>(hom, "menuPosition"));
 		builder.addComponent(menuPositionL, "menu.menuPosition");
+
+		Label positionL = new Label("item", new PropertyModel<Integer>(hom, "position"));
+		builder.addComponent(positionL, "menu.position");
+
+		Label addressL = new Label("item", new PropertyModel<String>(hom, "address"));
+		builder.addComponent(addressL, "menu.address");
 	}
 }

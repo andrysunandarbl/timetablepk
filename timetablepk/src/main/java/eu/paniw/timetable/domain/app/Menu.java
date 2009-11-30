@@ -1,16 +1,12 @@
 package eu.paniw.timetable.domain.app;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 
 @Entity
@@ -19,7 +15,8 @@ public class Menu implements Serializable {
 	private Long id;
 	private String name;
 	private MenuPosition menuPosition;
-	private List<MenuItem> items = new ArrayList<MenuItem>();
+	private Integer position;
+	private String address;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -48,15 +45,22 @@ public class Menu implements Serializable {
 		this.menuPosition = menuPosition;
 	}
 
-	@OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH})
-	public List<MenuItem> getItems() {
-		return items;
+	public Integer getPosition() {
+		return position;
 	}
 
-	public void setItems(List<MenuItem> items) {
-		this.items = items;
+	public void setPosition(Integer position) {
+		this.position = position;
 	}
-	
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
 	@Transient
 	public String getUnifyName() {
 		return name;
