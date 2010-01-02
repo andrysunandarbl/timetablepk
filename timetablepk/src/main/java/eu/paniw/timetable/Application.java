@@ -15,6 +15,7 @@ import eu.paniw.timetable.pages.LoginPage;
 public class Application extends DataApplication {
 	private Class<? extends Page> errorPage = HomePage.class;
 	private MenuLoader menuLoader;
+	private TranslationLoader translationLoader = new TranslationLoader();
 
 	@Override
 	protected void init() {
@@ -26,14 +27,16 @@ public class Application extends DataApplication {
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 		getApplicationSettings().setInternalErrorPage(getHomePage());
 		getApplicationSettings().setPageExpiredErrorPage(getHomePage());
-
+		getResourceSettings().addStringResourceLoader(translationLoader);
+		
 		new AnnotatedMountScanner().scanPackage("eu.paniw").mount(this);
+		
 		menuLoader = new MenuLoader();
 	}
 
 	@Override
 	public Session newSession(Request request, Response response) {
-		return new AuthSession(request);
+		return new TimeTableSession(request);
 	}
 
 	@Override

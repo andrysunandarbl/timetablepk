@@ -1,7 +1,10 @@
 package eu.paniw.timetable.pages.menu;
 
 import java.util.Arrays;
+import net.databinder.models.hib.HibernateListModel;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
@@ -10,6 +13,7 @@ import org.wicketstuff.annotation.strategy.MountMixedParam;
 import eu.paniw.timetable.Application;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.domain.app.MenuPosition;
+import eu.paniw.timetable.domain.app.Translation;
 import eu.paniw.timetable.pages.EditPage;
 import eu.paniw.timetable.tool.PageParametersTool;
 
@@ -50,6 +54,14 @@ public class MenuEditPage extends EditPage<Menu> {
 		TextField<String> addressTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "address"));
 		addressTF.setRequired(true);
 		builder.addComponent(addressTF, "menu.address");
+
+		CheckBox secondLevelCB = new CheckBox("item", new PropertyModel<Boolean>(getFormModel(), "secondLevel"));
+		builder.addComponent(secondLevelCB, "menu.secondLevel");
+
+		DropDownChoice<Translation> translationDDC = new DropDownChoice<Translation>("item", new PropertyModel<Translation>(
+				getFormModel(), "translation"), new HibernateListModel<Translation>(Translation.class),
+				new ChoiceRenderer<Translation>("key"));
+		builder.addComponent(translationDDC, "menu.translation");
 	}
 
 	@Override

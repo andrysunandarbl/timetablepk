@@ -30,21 +30,25 @@ public class TeacherListPage extends ListPage<Teacher> {
 		asdp = new TeacherSortableDataProvider(Teacher.class);
 
 		columns = new ArrayList<IColumn<Teacher>>();
-		columns.add(new PropertyColumn<Teacher>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<Teacher>(new Model<String>("Degree"), "degree", "degree"));
-		columns.add(new PropertyColumn<Teacher>(new Model<String>("Firstname"), "firstname", "firstname"));
-		columns.add(new PropertyColumn<Teacher>(new Model<String>("Surname"), "surname", "surname"));
-		columns.add(new AbstractColumn<Teacher>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<Teacher>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<Teacher>(new Model<String>(getString("teacher.degree", null, "teacher.degree")),
+				"degree", "degree"));
+		columns.add(new PropertyColumn<Teacher>(new Model<String>(getString("teacher.firstname", null, "teacher.firstname")),
+				"firstname", "firstname"));
+		columns.add(new PropertyColumn<Teacher>(new Model<String>(getString("teacher.surname", null, "teacher.surname")),
+				"surname", "surname"));
+		columns.add(new AbstractColumn<Teacher>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = 2155719884042421074L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Teacher>> cellItem, String componentId, IModel<Teacher> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", TeacherViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", TeacherEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

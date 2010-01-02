@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "course", alt="courses")
+@MountPath(path = "course", alt = "courses")
 public class CourseListPage extends ListPage<Course> {
 	public CourseListPage(PageParameters param) {
 		super(param, Course.class);
@@ -30,20 +30,23 @@ public class CourseListPage extends ListPage<Course> {
 		asdp = new CourseSortableDataProvider(Course.class);
 
 		columns = new ArrayList<IColumn<Course>>();
-		columns.add(new PropertyColumn<Course>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<Course>(new Model<String>("Name"), "name", "name"));
-		columns.add(new PropertyColumn<Course>(new Model<String>("Lecture"), "lecture", "lecture"));
-		columns.add(new AbstractColumn<Course>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<Course>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<Course>(new Model<String>(getString("course.name", null, "course.name")), "name",
+				"name"));
+		columns.add(new PropertyColumn<Course>(new Model<String>(getString("course.lecture", null, "course.lecture")),
+				"lecture", "lecture"));
+		columns.add(new AbstractColumn<Course>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = 4573394368293618764L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Course>> cellItem, String componentId, IModel<Course> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", CourseViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", CourseEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

@@ -11,7 +11,7 @@ public class UserAuthorizer implements IRoleCheckingStrategy {
 	}
 
 	public boolean hasAnyRole(Roles roles) {
-		AuthSession authSession = (AuthSession) Session.get();
+		TimeTableSession authSession = (TimeTableSession) Session.get();
 		if(authSession.getUser() != null) {
 			return true;
 		} else {

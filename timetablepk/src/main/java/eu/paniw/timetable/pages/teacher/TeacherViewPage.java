@@ -21,7 +21,7 @@ public class TeacherViewPage extends ViewPage<Teacher> {
 		super.init();
 
 		Label idL = new Label("item", new PropertyModel<String>(hom, "id"));
-		builder.addComponent(idL, "course.id");
+		builder.addComponent(idL, "app.id");
 
 		Label degreeL = new Label("item", new PropertyModel<String>(hom, "degree"));
 		builder.addComponent(degreeL, "teacher.degree");

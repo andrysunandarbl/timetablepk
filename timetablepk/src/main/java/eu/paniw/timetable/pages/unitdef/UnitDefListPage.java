@@ -8,7 +8,7 @@ import org.apache.wicket.model.Model;
 import eu.paniw.timetable.domain.entity.UnitDef;
 import eu.paniw.timetable.pages.ListPage;
 
-public abstract class UnitDefListPage<T extends UnitDef>  extends ListPage<T> {
+public abstract class UnitDefListPage<T extends UnitDef> extends ListPage<T> {
 	public UnitDefListPage(PageParameters param, Class<T> objectClass) {
 		super(param, objectClass);
 		preInit();
@@ -18,11 +18,11 @@ public abstract class UnitDefListPage<T extends UnitDef>  extends ListPage<T> {
 		asdp = new UnitDefSortableDataProvider<T>(objectClass);
 
 		columns = new ArrayList<IColumn<T>>();
-		columns.add(new PropertyColumn<T>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<T>(new Model<String>("Name"), "name", "name"));
-		columns.add(new PropertyColumn<T>(new Model<String>("Count"), "count", "count"));
+		columns.add(new PropertyColumn<T>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<T>(new Model<String>(getString("group.name", null, "group.name")), "name", "name"));
+		columns.add(new PropertyColumn<T>(new Model<String>(getString("group.count", null, "group.count")), "count", "count"));
 	}
-	
+
 	protected void init() {
 		super.init();
 	}

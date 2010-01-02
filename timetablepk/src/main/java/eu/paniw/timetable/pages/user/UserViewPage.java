@@ -21,7 +21,7 @@ public class UserViewPage extends ViewPage<User> {
 		super.init();
 
 		Label idL = new Label("item", new PropertyModel<String>(hom, "id"));
-		builder.addComponent(idL, "user.id");
+		builder.addComponent(idL, "app.id");
 
 		Label userNameL = new Label("item", new PropertyModel<String>(hom, "userName"));
 		builder.addComponent(userNameL, "user.userName");

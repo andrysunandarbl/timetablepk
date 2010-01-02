@@ -1,12 +1,14 @@
 package eu.paniw.timetable.domain.app;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 @Entity
@@ -17,6 +19,8 @@ public class Menu implements Serializable, Comparable<Menu> {
 	private MenuPosition menuPosition;
 	private Integer position;
 	private String address;
+	private Boolean secondLevel = false;
+	private Translation translation;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -59,6 +63,23 @@ public class Menu implements Serializable, Comparable<Menu> {
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public Boolean getSecondLevel() {
+		return secondLevel;
+	}
+
+	public void setSecondLevel(Boolean secondLevel) {
+		this.secondLevel = secondLevel;
+	}
+
+	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
+	public Translation getTranslation() {
+		return translation;
+	}
+
+	public void setTranslation(Translation translation) {
+		this.translation = translation;
 	}
 
 	@Transient
