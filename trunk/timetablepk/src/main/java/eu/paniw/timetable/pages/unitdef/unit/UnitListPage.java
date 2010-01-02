@@ -15,7 +15,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "unit", alt="units")
+@MountPath(path = "unit", alt = "units")
 public class UnitListPage extends UnitDefListPage<Unit> {
 	public UnitListPage(PageParameters param) {
 		super(param, Unit.class);
@@ -24,17 +24,18 @@ public class UnitListPage extends UnitDefListPage<Unit> {
 
 	@Override
 	protected void init() {
-		columns.add(new AbstractColumn<Unit>(new Model<String>("Actions")) {
+		columns.add(new AbstractColumn<Unit>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = 1701425947686757206L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Unit>> cellItem, String componentId, IModel<Unit> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", UnitViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", UnitEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

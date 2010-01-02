@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "menu", alt="menus")
+@MountPath(path = "menu", alt = "menus")
 public class MenuListPage extends ListPage<Menu> {
 	public MenuListPage(PageParameters param) {
 		super(param, Menu.class);
@@ -30,22 +30,30 @@ public class MenuListPage extends ListPage<Menu> {
 		asdp = new MenuSortableDataProvider(Menu.class);
 
 		columns = new ArrayList<IColumn<Menu>>();
-		columns.add(new PropertyColumn<Menu>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<Menu>(new Model<String>("Name"), "name", "name"));
-		columns.add(new PropertyColumn<Menu>(new Model<String>("Menu position"), "menuPosition", "menuPosition"));
-		columns.add(new PropertyColumn<Menu>(new Model<String>("Position"), "position", "position"));
-		columns.add(new PropertyColumn<Menu>(new Model<String>("Address"), "address", "address"));
-		columns.add(new AbstractColumn<Menu>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.name", null, "menu.name")), "name", "name"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.menuPosition", null, "menu.menuPosition")),
+				"menuPosition", "menuPosition"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.position", null, "menu.position")), "position",
+				"position"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.address", null, "menu.address")), "address",
+				"address"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.secondLevel", null, "menu.secondLevel")),
+				"secondLevel", "secondLevel"));
+		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.translation", null, "menu.translation")),
+				"translation", "translation.key"));
+		columns.add(new AbstractColumn<Menu>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = -5779057576370409825L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Menu>> cellItem, String componentId, IModel<Menu> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", MenuViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", MenuEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

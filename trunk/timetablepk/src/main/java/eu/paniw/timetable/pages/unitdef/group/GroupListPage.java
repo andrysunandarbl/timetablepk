@@ -25,18 +25,20 @@ public class GroupListPage extends UnitDefListPage<Group> {
 
 	@Override
 	protected void init() {
-		columns.add(new PropertyColumn<Group>(new Model<String>("Parent"), "parent", "parent.unifyName"));
-		columns.add(new AbstractColumn<Group>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<Group>(new Model<String>(getString("group.parent", null, "group.parent")), "parent",
+				"parent.unifyName"));
+		columns.add(new AbstractColumn<Group>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = -1455881377506448240L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Group>> cellItem, String componentId, IModel<Group> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", GroupViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", GroupEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.actions", null, "app.actions"),
+								asdp, wmc), "app.delete"));
 			}
 		});
 

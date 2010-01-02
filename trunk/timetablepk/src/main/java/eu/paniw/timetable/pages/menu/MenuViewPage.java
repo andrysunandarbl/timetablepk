@@ -21,7 +21,7 @@ public class MenuViewPage extends ViewPage<Menu> {
 		super.init();
 
 		Label idL = new Label("item", new PropertyModel<Long>(hom, "id"));
-		builder.addComponent(idL, "menu.id");
+		builder.addComponent(idL, "app.id");
 
 		Label nameL = new Label("item", new PropertyModel<String>(hom, "name"));
 		builder.addComponent(nameL, "menu.name");
@@ -34,5 +34,11 @@ public class MenuViewPage extends ViewPage<Menu> {
 
 		Label addressL = new Label("item", new PropertyModel<String>(hom, "address"));
 		builder.addComponent(addressL, "menu.address");
+		
+		Label secondLevelL = new Label("item", new PropertyModel<String>(hom, "secondLevel"));
+		builder.addComponent(secondLevelL, "menu.secondLevel");
+		
+		Label translationL = new Label("item", new PropertyModel<String>(hom, "translation.key"));
+		builder.addComponent(translationL, "menu.translation");
 	}
 }

@@ -21,7 +21,7 @@ public class RoomViewPage extends ViewPage<Room> {
 		super.init();
 
 		Label idL = new Label("item", new PropertyModel<String>(hom, "id"));
-		builder.addComponent(idL, "room.id");
+		builder.addComponent(idL, "app.id");
 
 		Label nameL = new Label("item", new PropertyModel<String>(hom, "name"));
 		builder.addComponent(nameL, "room.name");

@@ -26,6 +26,6 @@ public class GroupEditPage extends UnitDefEditPage<Group> {
 		DropDownChoice<Unit> parentDDC = new DropDownChoice<Unit>("item",
 				new PropertyModel<Unit>(getFormModel(), "count"), new HibernateListModel<Unit>(Unit.class),
 				new ChoiceRenderer<Unit>("unifyName", "id"));
-		builder.addComponent(parentDDC, "group.unit");
+		builder.addComponent(parentDDC, "group.parent");
 	}
 }

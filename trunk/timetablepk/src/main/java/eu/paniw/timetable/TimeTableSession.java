@@ -4,15 +4,14 @@ import org.apache.wicket.Request;
 import org.apache.wicket.protocol.http.WebSession;
 import eu.paniw.timetable.domain.entity.User;
 
-public class AuthSession extends WebSession {
+public class TimeTableSession extends WebSession {
 	private static final long serialVersionUID = 6226062206238755082L;
 	private User user;
 
-	public AuthSession(Request request) {
+	public TimeTableSession(Request request) {
 		super(request);
 
 	}
-
 
 	public User getUser() {
 		return user;

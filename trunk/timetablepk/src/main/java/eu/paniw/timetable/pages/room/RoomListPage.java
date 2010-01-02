@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "room", alt="rooms")
+@MountPath(path = "room", alt = "rooms")
 public class RoomListPage extends ListPage<Room> {
 	public RoomListPage(PageParameters param) {
 		super(param, Room.class);
@@ -30,21 +30,24 @@ public class RoomListPage extends ListPage<Room> {
 		asdp = new RoomSortableDataProvider(Room.class);
 
 		columns = new ArrayList<IColumn<Room>>();
-		columns.add(new PropertyColumn<Room>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<Room>(new Model<String>("Name"), "name", "name"));
-		columns.add(new PropertyColumn<Room>(new Model<String>("Cpacity"), "capacity", "capacity"));
-		columns.add(new PropertyColumn<Room>(new Model<String>("Lecture"), "lecture", "lecture"));
-		columns.add(new AbstractColumn<Room>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<Room>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<Room>(new Model<String>(getString("room.name", null, "room.name")), "name", "name"));
+		columns.add(new PropertyColumn<Room>(new Model<String>(getString("room.capacity", null, "room.capacity")), "capacity",
+				"capacity"));
+		columns.add(new PropertyColumn<Room>(new Model<String>(getString("room.lecture", null, "room.lecture")), "lecture",
+				"lecture"));
+		columns.add(new AbstractColumn<Room>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = -917688005338370119L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<Room>> cellItem, String componentId, IModel<Room> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", RoomViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", RoomEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

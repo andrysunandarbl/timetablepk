@@ -18,7 +18,7 @@ import eu.paniw.timetable.panel.LinksPanel;
 import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
-@MountPath(path = "user", alt="users")
+@MountPath(path = "user", alt = "users")
 public class UserListPage extends ListPage<User> {
 	public UserListPage(PageParameters param) {
 		super(param, User.class);
@@ -30,22 +30,27 @@ public class UserListPage extends ListPage<User> {
 		asdp = new UserSortableDataProvider(User.class);
 
 		columns = new ArrayList<IColumn<User>>();
-		columns.add(new PropertyColumn<User>(new Model<String>("ID"), "id", "id"));
-		columns.add(new PropertyColumn<User>(new Model<String>("User name"), "userName", "userName"));
-		columns.add(new PropertyColumn<User>(new Model<String>("First name"), "firstname", "firstname"));
-		columns.add(new PropertyColumn<User>(new Model<String>("Surname"), "surname", "surname"));
-		columns.add(new PropertyColumn<User>(new Model<String>("Active"), "active", "active"));
-		columns.add(new AbstractColumn<User>(new Model<String>("Actions")) {
+		columns.add(new PropertyColumn<User>(new Model<String>(getString("app.id", null, "app.id")), "id", "id"));
+		columns.add(new PropertyColumn<User>(new Model<String>(getString("user.userName", null, "user.userName")), "userName",
+				"userName"));
+		columns.add(new PropertyColumn<User>(new Model<String>(getString("user.firstname", null, "user.firstname")),
+				"firstname", "firstname"));
+		columns.add(new PropertyColumn<User>(new Model<String>(getString("user.surname", null, "user.surname")), "surname",
+				"surname"));
+		columns.add(new PropertyColumn<User>(new Model<String>(getString("user.active", null, "user.active")), "active",
+				"active"));
+		columns.add(new AbstractColumn<User>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = 472860112165821493L;
 
 			@Override
 			public void populateItem(Item<ICellPopulator<User>> cellItem, String componentId, IModel<User> rowModel) {
 				cellItem.add(new LinksPanel(componentId).addLink(
 						new BookmarkablePageLink<Page>("link", UserViewPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.view").addLink(
+								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", UserEditPage.class, new PageParametersTool("id", rowModel
-								.getObject().getId()).getPP()), "list.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), "Are you sure?", asdp, wmc), "list.delete"));
+								.getObject().getId()).getPP()), "app.edit").addLink(
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

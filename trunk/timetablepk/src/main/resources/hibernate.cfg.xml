@@ -25,5 +25,6 @@
 		<mapping class="eu.paniw.timetable.domain.entity.Group" />
 		<mapping class="eu.paniw.timetable.domain.entity.User" />
 		<mapping class="eu.paniw.timetable.domain.app.Menu" />
+		<mapping class="eu.paniw.timetable.domain.app.Translation" />
 	</session-factory>
 </hibernate-configuration>

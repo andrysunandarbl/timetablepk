@@ -16,7 +16,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.QueryException;
 import org.hibernate.criterion.Restrictions;
 import org.wicketstuff.annotation.mount.MountPath;
-import eu.paniw.timetable.AuthSession;
+import eu.paniw.timetable.TimeTableSession;
 import eu.paniw.timetable.domain.entity.User;
 
 @MountPath(path = "login")
@@ -78,7 +78,7 @@ public class LoginPage extends WebPage {
 
 				user = hom.getObject();
 				if (user != null && user.getPassword().equals(password)) {
-					AuthSession authSession = (AuthSession) getSession();
+					TimeTableSession authSession = (TimeTableSession) getSession();
 					authSession.setUser(user);
 				} else {
 					return false;

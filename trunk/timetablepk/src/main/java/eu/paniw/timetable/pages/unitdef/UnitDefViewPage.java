@@ -18,7 +18,7 @@ public abstract class UnitDefViewPage<T extends UnitDef> extends ViewPage<T> {
 		super.init();
 
 		Label idL = new Label("item", new PropertyModel<String>(hom, "id"));
-		builder.addComponent(idL, "group.id");
+		builder.addComponent(idL, "app.id");
 
 		Label nameL = new Label("item", new PropertyModel<String>(hom, "name"));
 		builder.addComponent(nameL, "group.name");
