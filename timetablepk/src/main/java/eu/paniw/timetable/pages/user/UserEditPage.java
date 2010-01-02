@@ -43,8 +43,7 @@ public class UserEditPage extends EditPage<User> {
 		TextField<String> surnameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "surname"));
 		builder.addComponent(surnameTF, "user.surname");
 
-		TextArea<String> descriptionTA = new TextArea<String>("item", new PropertyModel<String>(getFormModel(),
-				"description"));
+		TextArea<String> descriptionTA = new TextArea<String>("item", new PropertyModel<String>(getFormModel(), "description"));
 		builder.addComponent(descriptionTA, "user.description");
 
 		CheckBox activeCB = new CheckBox("item", new PropertyModel<Boolean>(getFormModel(), "active"));

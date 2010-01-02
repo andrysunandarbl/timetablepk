@@ -27,7 +27,7 @@ public abstract class EditPage<T extends Serializable> extends BasePage {
 	public EditPage(PageParameters param, Class<T> clazz, Class<? extends Page> responseAfterSave,
 			Class<? extends Page> responseAfterCancel, PageParameters responseParam) {
 		super(param);
-		
+
 		this.clazz = clazz;
 		this.responseAfterSave = responseAfterSave;
 		this.responseAfterCancel = responseAfterCancel;

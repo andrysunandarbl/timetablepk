@@ -3,9 +3,9 @@ package eu.paniw.timetable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import net.databinder.models.hib.HibernateListModel;
 import org.apache.wicket.Page;
 import org.apache.wicket.markup.repeater.RepeatingView;
-import net.databinder.models.hib.HibernateListModel;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.panel.MenuPanel;
 

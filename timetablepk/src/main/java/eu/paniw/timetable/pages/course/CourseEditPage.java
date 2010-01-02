@@ -40,9 +40,9 @@ public class CourseEditPage extends EditPage<Course> {
 				new HibernateListModel<Unit>(Unit.class), new ChoiceRenderer<Unit>("unifyName", "id"), 5, false);
 		builder.addComponent(unitsP, "course.units");
 
-		Palette<Teacher> teachersP = new Palette<Teacher>("item", new PropertyModel<List<Teacher>>(getFormModel(),
-				"teachers"), new HibernateListModel<Teacher>(Teacher.class), new ChoiceRenderer<Teacher>("unifyName", "id"),
-				5, false);
+		Palette<Teacher> teachersP = new Palette<Teacher>("item",
+				new PropertyModel<List<Teacher>>(getFormModel(), "teachers"), new HibernateListModel<Teacher>(Teacher.class),
+				new ChoiceRenderer<Teacher>("unifyName", "id"), 5, false);
 		builder.addComponent(teachersP, "course.teachers");
 	}
 

@@ -4,7 +4,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
   	<groupId>eu.paniw</groupId>
   	<artifactId>timetablepk</artifactId>
   	<packaging>jar</packaging>
-  	<version>0.0.1-SNAPSHOT</version>
+  	<version>0.2.0-SNAPSHOT</version>
   	<name>timetablepk</name>
   	<url>http://maven.apache.org</url>
   
@@ -76,13 +76,11 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<artifactId>wicket-datetime</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket-auth-roles</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-
 		<dependency>
 			<groupId>net.databinder</groupId>
 			<artifactId>databinder-app-hib</artifactId>
@@ -165,11 +163,6 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 			<version>1.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.wicketstuff</groupId>
-			<artifactId>wicketstuff-dojo</artifactId>
-			<version>1.3.0-beta</version>
-		</dependency>
-		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
@@ -202,7 +195,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/ma
 		</repository>
 	</repositories>
 	<properties>
-		<wicket.version>1.4.3</wicket.version>
+		<wicket.version>1.4.5</wicket.version>
 		<databinder.version>1.3.0</databinder.version>
 		<dom4j.version>1.6.1</dom4j.version>
 	</properties>

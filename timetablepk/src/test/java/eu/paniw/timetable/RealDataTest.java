@@ -301,7 +301,7 @@ public class RealDataTest extends TestCase {
 		t39.setPlTranslation("Czy jesteś pewny?");
 		t39.setEnTranslation("Are you sure?");
 		session.save(t39);
-				
+
 		// Translation t40 = new Translation();
 		// t40.setKey(key);
 		// t40.setPlTranslation(plTranslation);
