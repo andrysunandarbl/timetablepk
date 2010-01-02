@@ -41,7 +41,7 @@ public class LinkTool {
 					for(Component c : targetComponents) {
 						target.addComponent(c);
 					}
-				} catch (HibernateException exc) {
+				} catch(HibernateException exc) {
 					session.getTransaction().rollback();
 					exc.printStackTrace();
 				}

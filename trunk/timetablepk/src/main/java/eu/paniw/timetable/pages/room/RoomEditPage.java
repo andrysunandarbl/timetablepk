@@ -27,8 +27,7 @@ public class RoomEditPage extends EditPage<Room> {
 		nameTF.setRequired(true);
 		builder.addComponent(nameTF, "room.name");
 
-		TextField<Integer> capacityTF = new TextField<Integer>("item",
-				new PropertyModel<Integer>(getFormModel(), "capacity"));
+		TextField<Integer> capacityTF = new TextField<Integer>("item", new PropertyModel<Integer>(getFormModel(), "capacity"));
 		capacityTF.setRequired(true);
 		capacityTF.add(new MinimumValidator<Integer>(0));
 		builder.addComponent(capacityTF, "room.capacity");

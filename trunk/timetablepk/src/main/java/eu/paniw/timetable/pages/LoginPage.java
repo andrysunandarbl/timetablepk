@@ -27,7 +27,7 @@ public class LoginPage extends WebPage {
 	}
 
 	private void init() {
-		
+
 		LoginForm loginForm = new LoginForm("loginForm");
 		add(loginForm);
 	}
@@ -55,7 +55,7 @@ public class LoginPage extends WebPage {
 
 		@Override
 		protected void onSubmit() {
-			if (checkUser()) {
+			if(checkUser()) {
 				setResponsePage(HomePage.class);
 			} else {
 				getPage().error("Failed");
@@ -70,20 +70,20 @@ public class LoginPage extends WebPage {
 
 					@Override
 					public void build(Criteria criteria) {
-						criteria.add(Restrictions.sqlRestriction("lower({alias}.username) like lower(?)", username.toLowerCase(),
-								Hibernate.STRING));
+						criteria.add(Restrictions.sqlRestriction("lower({alias}.username) like lower(?)", username
+								.toLowerCase(), Hibernate.STRING));
 						criteria.add(Restrictions.eq("active", Boolean.TRUE));
 					}
 				});
 
 				user = hom.getObject();
-				if (user != null && user.getPassword().equals(password)) {
+				if(user != null && user.getPassword().equals(password)) {
 					TimeTableSession authSession = (TimeTableSession) getSession();
 					authSession.setUser(user);
 				} else {
 					return false;
 				}
-			} catch (QueryException e) {
+			} catch(QueryException e) {
 				e.printStackTrace();
 				return false;
 			}

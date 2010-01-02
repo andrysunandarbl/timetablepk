@@ -28,9 +28,9 @@ public class Application extends DataApplication {
 		getApplicationSettings().setInternalErrorPage(getHomePage());
 		getApplicationSettings().setPageExpiredErrorPage(getHomePage());
 		getResourceSettings().addStringResourceLoader(translationLoader);
-		
+
 		new AnnotatedMountScanner().scanPackage("eu.paniw").mount(this);
-		
+
 		menuLoader = new MenuLoader();
 	}
 

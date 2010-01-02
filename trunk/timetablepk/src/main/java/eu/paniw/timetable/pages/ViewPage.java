@@ -17,7 +17,7 @@ public abstract class ViewPage<T extends Serializable> extends BasePage {
 
 	public ViewPage(PageParameters param, Class<T> clazz, Class<? extends Page> listPage, Class<? extends Page> editPage) {
 		super(param);
-		
+
 		this.clazz = clazz;
 		this.listPage = listPage;
 		this.editPage = editPage;

@@ -76,7 +76,7 @@ public abstract class UnitDef implements Serializable {
 	public void setParent(UnitDef parent) {
 		this.parent = parent;
 	}
-	
+
 	@Transient
 	public String getUnifyName() {
 		return name;

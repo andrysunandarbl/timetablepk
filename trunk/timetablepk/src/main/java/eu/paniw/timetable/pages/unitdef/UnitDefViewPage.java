@@ -8,8 +8,7 @@ import eu.paniw.timetable.domain.entity.UnitDef;
 import eu.paniw.timetable.pages.ViewPage;
 
 public abstract class UnitDefViewPage<T extends UnitDef> extends ViewPage<T> {
-	public UnitDefViewPage(PageParameters param, Class<T> clazz, Class<? extends Page> listPage,
-			Class<? extends Page> editPage) {
+	public UnitDefViewPage(PageParameters param, Class<T> clazz, Class<? extends Page> listPage, Class<? extends Page> editPage) {
 		super(param, clazz, listPage, editPage);
 	}
 

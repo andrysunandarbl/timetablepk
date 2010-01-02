@@ -20,7 +20,7 @@ public class TimeTableSession extends WebSession {
 	public void setUser(User user) {
 		this.user = user;
 	}
-	
+
 	public void logoutUser() {
 		user = null;
 	}

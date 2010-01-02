@@ -7,7 +7,6 @@ import org.wicketstuff.annotation.mount.MountPath;
 public class HomePage extends BasePage {
 	public HomePage(PageParameters param) {
 		super(param);
-		
-		
+
 	}
 }

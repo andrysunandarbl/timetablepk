@@ -11,14 +11,14 @@ import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.model.Model;
 
-public class FormBuilderItem<T>  extends DataPanel<T> {
+public class FormBuilderItem<T> extends DataPanel<T> {
 	private static final long serialVersionUID = 8098872750323622595L;
 
 	public FormBuilderItem(Component component, String labelTxt) {
 		super("item");
 		init(component, labelTxt);
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	private void init(Component component, String labelTxt) {
 		Label label = new Label("label", labelTxt);

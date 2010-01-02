@@ -43,15 +43,14 @@ public abstract class ListPage<T extends Serializable> extends BasePage {
 
 		dataTable = new DataTable<T>("dataTable", (IColumn<T>[]) columns.toArray(new IColumn[columns.size()]), asdp,
 				ROW_PER_PAGE) {
-					private static final long serialVersionUID = 3731678422086406680L;
+			private static final long serialVersionUID = 3731678422086406680L;
 
-					@Override
-					protected Item<T> newRowItem(String id, int index, IModel<T> model) {
-						Item item = super.newRowItem(id, index, model);
-						item.add(new AttributeModifier("class", true, new Model(index % 2 == 0 ? "odd"
-								: "even")));
-						return item;
-					}
+			@Override
+			protected Item<T> newRowItem(String id, int index, IModel<T> model) {
+				Item item = super.newRowItem(id, index, model);
+				item.add(new AttributeModifier("class", true, new Model(index % 2 == 0 ? "odd" : "even")));
+				return item;
+			}
 		};
 		dataTable.setOutputMarkupId(true);
 		dataTable.addTopToolbar(new AjaxNavigationToolbar(dataTable) {

@@ -34,10 +34,10 @@ public class MenuViewPage extends ViewPage<Menu> {
 
 		Label addressL = new Label("item", new PropertyModel<String>(hom, "address"));
 		builder.addComponent(addressL, "menu.address");
-		
+
 		Label secondLevelL = new Label("item", new PropertyModel<String>(hom, "secondLevel"));
 		builder.addComponent(secondLevelL, "menu.secondLevel");
-		
+
 		Label translationL = new Label("item", new PropertyModel<String>(hom, "translation.key"));
 		builder.addComponent(translationL, "menu.translation");
 	}

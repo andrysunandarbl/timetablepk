@@ -11,11 +11,11 @@ public class ViewBuilderItem extends Panel {
 		super(id);
 		init(component, labelTxt);
 	}
-	
+
 	private void init(Component component, String labelTxt) {
 		component.setRenderBodyOnly(true);
 		add(component);
-		
+
 		Label label = new Label("label", labelTxt);
 		label.setRenderBodyOnly(true);
 		add(label);

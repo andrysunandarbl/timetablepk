@@ -14,7 +14,7 @@ public class PageParametersTool implements Serializable {
 	public PageParametersTool(PageParameters param) {
 		this.param = param;
 	}
-	
+
 	public PageParametersTool(String key, Long value) {
 		this(key, String.valueOf(value));
 	}
