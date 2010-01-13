@@ -34,5 +34,8 @@ public class UserViewPage extends ViewPage<User> {
 
 		Label activeL = new Label("item", new PropertyModel<String>(hom, "active"));
 		builder.addComponent(activeL, "user.active");
+
+		Label userAppRoleL = new Label("item", new PropertyModel<String>(hom, "userAppRole"));
+		builder.addComponent(userAppRoleL, "user.role");
 	}
 }

@@ -28,7 +28,7 @@ public class ViewBuilder<T> extends Panel {
 				setResponsePage(editPage);
 			}
 		};
-		addLink.add(new SimpleAttributeModifier("value", "Add"));
+		addLink.add(new SimpleAttributeModifier("value", getString("app.add", null, "app.add")));
 		add(addLink);
 
 		Link<T> editLink = new Link<T>("edit") {
@@ -39,7 +39,7 @@ public class ViewBuilder<T> extends Panel {
 				setResponsePage(editPage, new PageParametersTool("id", objectId).getPP());
 			}
 		};
-		editLink.add(new SimpleAttributeModifier("value", "Edit"));
+		editLink.add(new SimpleAttributeModifier("value", getString("app.edit", null, "app.edit")));
 		add(editLink);
 
 		Link<T> backLink = new Link<T>("back") {
@@ -50,7 +50,7 @@ public class ViewBuilder<T> extends Panel {
 				setResponsePage(listPage);
 			}
 		};
-		backLink.add(new SimpleAttributeModifier("value", "Back"));
+		backLink.add(new SimpleAttributeModifier("value", getString("app.back", null, "app.back")));
 		add(backLink);
 
 		builder = new RepeatingView("builder");

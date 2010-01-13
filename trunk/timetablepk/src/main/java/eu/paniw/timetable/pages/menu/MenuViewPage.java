@@ -40,5 +40,8 @@ public class MenuViewPage extends ViewPage<Menu> {
 
 		Label translationL = new Label("item", new PropertyModel<String>(hom, "translation.key"));
 		builder.addComponent(translationL, "menu.translation");
+
+		Label roleL = new Label("item", new PropertyModel<String>(hom, "role"));
+		builder.addComponent(roleL, "menu.role");
 	}
 }

@@ -21,6 +21,7 @@ public class Menu implements Serializable, Comparable<Menu> {
 	private String address;
 	private Boolean secondLevel = false;
 	private Translation translation;
+	private UserAppRole role = UserAppRole.USER;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -80,6 +81,15 @@ public class Menu implements Serializable, Comparable<Menu> {
 
 	public void setTranslation(Translation translation) {
 		this.translation = translation;
+	}
+
+	@Enumerated
+	public UserAppRole getRole() {
+		return role;
+	}
+
+	public void setRole(UserAppRole role) {
+		this.role = role;
 	}
 
 	@Transient

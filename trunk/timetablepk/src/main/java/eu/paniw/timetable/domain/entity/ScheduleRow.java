@@ -13,19 +13,19 @@ public class ScheduleRow {
 	public List<ScheduleItem> getItems() {
 		return items;
 	}
-
+	
 	public void add(ScheduleItem item) {
 		items.add(item);
 	}
-
+	
 	public void clear() {
 		items.clear();
 	}
-
+	
 	public int size() {
 		return items.size();
 	}
-
+	
 	public ScheduleItem get(int index) {
 		return items.get(index);
 	}

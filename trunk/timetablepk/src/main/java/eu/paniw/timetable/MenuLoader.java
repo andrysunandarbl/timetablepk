@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import net.databinder.models.hib.HibernateListModel;
+import org.apache.wicket.Component;
 import org.apache.wicket.Page;
+import org.apache.wicket.authorization.strategies.role.metadata.MetaDataRoleAuthorizationStrategy;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.panel.MenuPanel;
@@ -27,7 +29,9 @@ public class MenuLoader {
 		RepeatingView menuTop = new RepeatingView("menuTop");
 		menuTop.setRenderBodyOnly(true);
 		for(Menu m : topMenus) {
-			menuTop.add(new MenuPanel(menuTop.newChildId(), m));
+			MenuPanel mp = new MenuPanel(menuTop.newChildId(), m);
+			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
+			menuTop.add(mp);
 		}
 		page.add(menuTop);
 
@@ -35,7 +39,9 @@ public class MenuLoader {
 		RepeatingView menuMain = new RepeatingView("menuMain");
 		menuMain.setRenderBodyOnly(true);
 		for(Menu m : mainMenus) {
-			menuMain.add(new MenuPanel(menuMain.newChildId(), m));
+			MenuPanel mp = new MenuPanel(menuMain.newChildId(), m);
+			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
+			menuMain.add(mp);
 		}
 		page.add(menuMain);
 
@@ -43,7 +49,9 @@ public class MenuLoader {
 		RepeatingView menuBottom = new RepeatingView("menuBottom");
 		menuBottom.setRenderBodyOnly(true);
 		for(Menu m : bottomMenus) {
-			menuBottom.add(new MenuPanel(menuBottom.newChildId(), m));
+			MenuPanel mp = new MenuPanel(menuBottom.newChildId(), m);
+			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
+			menuBottom.add(mp);
 		}
 		page.add(menuBottom);
 	}

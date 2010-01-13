@@ -5,6 +5,7 @@ import org.apache.wicket.Page;
 import org.apache.wicket.Request;
 import org.apache.wicket.Response;
 import org.apache.wicket.Session;
+import org.apache.wicket.authorization.strategies.role.RoleAuthorizationStrategy;
 import org.apache.wicket.markup.html.WebPage;
 import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.DefaultComponentSafeNamingStrategy;
@@ -21,8 +22,7 @@ public class Application extends DataApplication {
 	protected void init() {
 		super.init();
 
-		// getSecuritySettings().setAuthorizationStrategy(new
-		// RoleAuthorizationStrategy(new UserAuthorizer()));
+		getSecuritySettings().setAuthorizationStrategy(new RoleAuthorizationStrategy(new UserAuthorizer()));
 		getApplicationSettings().setAccessDeniedPage(LoginPage.class);
 		getMarkupSettings().setDefaultMarkupEncoding("UTF-8");
 		getApplicationSettings().setInternalErrorPage(getHomePage());

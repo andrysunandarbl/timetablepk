@@ -40,8 +40,6 @@ public class MenuListPage extends ListPage<Menu> {
 				"address"));
 		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.secondLevel", null, "menu.secondLevel")),
 				"secondLevel", "secondLevel"));
-		columns.add(new PropertyColumn<Menu>(new Model<String>(getString("menu.translation", null, "menu.translation")),
-				"translation", "translation.key"));
 		columns.add(new AbstractColumn<Menu>(new Model<String>(getString("app.actions", null, "app.actions"))) {
 			private static final long serialVersionUID = -5779057576370409825L;
 

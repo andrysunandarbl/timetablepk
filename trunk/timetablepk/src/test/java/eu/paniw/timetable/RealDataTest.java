@@ -8,6 +8,7 @@ import org.hibernate.cfg.DefaultComponentSafeNamingStrategy;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.domain.app.MenuPosition;
 import eu.paniw.timetable.domain.app.Translation;
+import eu.paniw.timetable.domain.app.UserAppRole;
 import eu.paniw.timetable.domain.entity.User;
 
 public class RealDataTest extends TestCase {
@@ -48,6 +49,7 @@ public class RealDataTest extends TestCase {
 		user1.setFirstname("Grzegorz");
 		user1.setSurname("Paniw");
 		user1.setDescription("Main administratior of application");
+		user1.setUserAppRole(UserAppRole.ADMIN);
 		session.save(user1);
 
 		User user2 = new User();
@@ -56,6 +58,7 @@ public class RealDataTest extends TestCase {
 		user2.setFirstname("Marcin");
 		user2.setSurname("Kościelniak");
 		user2.setDescription("Sub-administratior of application");
+		user2.setUserAppRole(UserAppRole.ADMIN);
 		session.save(user2);
 
 		User user3 = new User();
@@ -64,7 +67,17 @@ public class RealDataTest extends TestCase {
 		user3.setFirstname("Michał");
 		user3.setSurname("Derecki");
 		user3.setDescription("Sub-administratior of application");
+		user3.setUserAppRole(UserAppRole.ADMIN);
 		session.save(user3);
+
+		User user4 = new User();
+		user4.setUserName("test");
+		user4.setPassword("pass.word");
+		user4.setFirstname("Jan");
+		user4.setSurname("Kowalski");
+		user4.setDescription("Normal user");
+		user4.setUserAppRole(UserAppRole.USER);
+		session.save(user4);
 	}
 
 	private void addTranslations() {
@@ -302,54 +315,54 @@ public class RealDataTest extends TestCase {
 		t39.setEnTranslation("Are you sure?");
 		session.save(t39);
 
-		// Translation t40 = new Translation();
-		// t40.setKey(key);
-		// t40.setPlTranslation(plTranslation);
-		// t40.setEnTranslation(enTranslation);
-		// session.save(t40);
-		//		
-		// Translation t41 = new Translation();
-		// t41.setKey(key);
-		// t41.setPlTranslation(plTranslation);
-		// t41.setEnTranslation(enTranslation);
-		// session.save(t41);
-		//		
-		// Translation t42 = new Translation();
-		// t42.setKey(key);
-		// t42.setPlTranslation(plTranslation);
-		// t42.setEnTranslation(enTranslation);
-		// session.save(t42);
-		//		
-		// Translation t43 = new Translation();
-		// t43.setKey(key);
-		// t43.setPlTranslation(plTranslation);
-		// t43.setEnTranslation(enTranslation);
-		// session.save(t43);
-		//		
-		// Translation t44 = new Translation();
-		// t44.setKey(key);
-		// t44.setPlTranslation(plTranslation);
-		// t44.setEnTranslation(enTranslation);
-		// session.save(t44);
-		//		
-		// Translation t45 = new Translation();
-		// t45.setKey(key);
-		// t45.setPlTranslation(plTranslation);
-		// t45.setEnTranslation(enTranslation);
-		// session.save(t45);
-		//		
-		// Translation t46 = new Translation();
-		// t46.setKey(key);
-		// t46.setPlTranslation(plTranslation);
-		// t46.setEnTranslation(enTranslation);
-		// session.save(t46);
-		//		
-		// Translation t47 = new Translation();
-		// t47.setKey(key);
-		// t47.setPlTranslation(plTranslation);
-		// t47.setEnTranslation(enTranslation);
-		// session.save(t47);
-		//		
+		Translation t40 = new Translation();
+		t40.setKey("app.add");
+		t40.setPlTranslation("Dodaj");
+		t40.setEnTranslation("Add");
+		session.save(t40);
+
+		Translation t41 = new Translation();
+		t41.setKey("app.back");
+		t41.setPlTranslation("Cofnij");
+		t41.setEnTranslation("Back");
+		session.save(t41);
+
+		Translation t42 = new Translation();
+		t42.setKey("user.role");
+		t42.setPlTranslation("Rola");
+		t42.setEnTranslation("Role");
+		session.save(t42);
+
+		Translation t43 = new Translation();
+		t43.setKey("menu.role");
+		t43.setPlTranslation("Uprawnienie");
+		t43.setEnTranslation("Permission");
+		session.save(t43);
+
+		Translation t44 = new Translation();
+		t44.setKey("loginInfo");
+		t44.setPlTranslation("Dostęp do aplikacji wymaga zalogowania.<br />Proszę podać poniższe dane:");
+		t44.setEnTranslation("Access to applications requires login.<br />Please insert the following data:");
+		session.save(t44);
+
+		Translation t45 = new Translation();
+		t45.setKey("login");
+		t45.setPlTranslation("Login");
+		t45.setEnTranslation("Login");
+		session.save(t45);
+
+		Translation t46 = new Translation();
+		t46.setKey("password");
+		t46.setPlTranslation("Hasło");
+		t46.setEnTranslation("Password");
+		session.save(t46);
+
+		 Translation t47 = new Translation();
+		 t47.setKey("loginbutton");
+		 t47.setPlTranslation("Zaloguj");
+		 t47.setEnTranslation("Login");
+		 session.save(t47);
+				
 		// Translation t48 = new Translation();
 		// t48.setKey(key);
 		// t48.setPlTranslation(plTranslation);
@@ -565,6 +578,20 @@ public class RealDataTest extends TestCase {
 		m6.setTranslation(t6);
 		session.save(m6);
 
+		Translation t23 = new Translation();
+		t23.setKey("menu.logout");
+		t23.setPlTranslation("Wyloguj");
+		t23.setEnTranslation("Logout");
+		session.save(t23);
+
+		Menu m23 = new Menu();
+		m23.setPosition(4);
+		m23.setMenuPosition(MenuPosition.TOP);
+		m23.setName("Add Translation");
+		m23.setAddress("/timetablepk/logout");
+		m23.setTranslation(t23);
+		session.save(m23);
+
 		/* main */
 		Translation t7 = new Translation();
 		t7.setKey("menu.teachers");
@@ -723,6 +750,7 @@ public class RealDataTest extends TestCase {
 		m17.setName("User");
 		m17.setAddress("/timetablepk/users");
 		m17.setTranslation(t17);
+		m17.setRole(UserAppRole.ADMIN);
 		session.save(m17);
 
 		Translation t18 = new Translation();
@@ -738,6 +766,7 @@ public class RealDataTest extends TestCase {
 		m18.setAddress("/timetablepk/user/add");
 		m18.setSecondLevel(true);
 		m18.setTranslation(t18);
+		m18.setRole(UserAppRole.ADMIN);
 		session.save(m18);
 
 		Translation t19 = new Translation();
@@ -752,10 +781,11 @@ public class RealDataTest extends TestCase {
 		m19.setName("Menus");
 		m19.setAddress("/timetablepk/menus");
 		m19.setTranslation(t19);
+		m19.setRole(UserAppRole.ADMIN);
 		session.save(m19);
 
 		Translation t20 = new Translation();
-		t20.setKey("menu.menus");
+		t20.setKey("menu.menus.add");
 		t20.setPlTranslation("Dodaj menu");
 		t20.setEnTranslation("Add menu");
 		session.save(t20);
@@ -767,6 +797,7 @@ public class RealDataTest extends TestCase {
 		m20.setAddress("/timetablepk/menu/add");
 		m20.setSecondLevel(true);
 		m20.setTranslation(t20);
+		m20.setRole(UserAppRole.ADMIN);
 		session.save(m20);
 
 		Translation t21 = new Translation();
@@ -781,6 +812,23 @@ public class RealDataTest extends TestCase {
 		m21.setName("Translations");
 		m21.setAddress("/timetablepk/translations");
 		m21.setTranslation(t21);
+		m21.setRole(UserAppRole.ADMIN);
 		session.save(m21);
+
+		Translation t22 = new Translation();
+		t22.setKey("menu.translations.add");
+		t22.setPlTranslation("Dodaj tłumaczenie");
+		t22.setEnTranslation("Add translation");
+		session.save(t22);
+
+		Menu m22 = new Menu();
+		m22.setPosition(15);
+		m22.setMenuPosition(MenuPosition.MAIN);
+		m22.setName("Add Translation");
+		m22.setAddress("/timetablepk/translation/add");
+		m22.setSecondLevel(true);
+		m22.setTranslation(t22);
+		m22.setRole(UserAppRole.ADMIN);
+		session.save(m22);
 	}
 }

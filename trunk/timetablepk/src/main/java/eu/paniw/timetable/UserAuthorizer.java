@@ -7,16 +7,14 @@ import org.apache.wicket.authorization.strategies.role.Roles;
 public class UserAuthorizer implements IRoleCheckingStrategy {
 
 	public UserAuthorizer() {
-
 	}
 
 	public boolean hasAnyRole(Roles roles) {
-		TimeTableSession authSession = (TimeTableSession) Session.get();
-		if(authSession.getUser() != null) {
-			return true;
+		TimeTableSession timeTableSession = (TimeTableSession) Session.get();
+		if(timeTableSession.getUser() != null) {
+			return timeTableSession.getUser().hasAnyRole(roles);
 		} else {
 			return false;
 		}
 	}
-
 }
