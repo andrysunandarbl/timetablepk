@@ -14,6 +14,7 @@ import eu.paniw.timetable.Application;
 import eu.paniw.timetable.domain.app.Menu;
 import eu.paniw.timetable.domain.app.MenuPosition;
 import eu.paniw.timetable.domain.app.Translation;
+import eu.paniw.timetable.domain.app.UserAppRole;
 import eu.paniw.timetable.pages.EditPage;
 import eu.paniw.timetable.tool.PageParametersTool;
 
@@ -62,6 +63,12 @@ public class MenuEditPage extends EditPage<Menu> {
 				getFormModel(), "translation"), new HibernateListModel<Translation>(Translation.class),
 				new ChoiceRenderer<Translation>("key"));
 		builder.addComponent(translationDDC, "menu.translation");
+
+		DropDownChoice<UserAppRole> roleDDC = new DropDownChoice<UserAppRole>("item", new PropertyModel<UserAppRole>(
+				getFormModel(), "role"), Arrays.asList(UserAppRole.values()));
+		roleDDC.setRequired(true);
+		roleDDC.setNullValid(false);
+		builder.addComponent(roleDDC, "menu.role");
 	}
 
 	@Override

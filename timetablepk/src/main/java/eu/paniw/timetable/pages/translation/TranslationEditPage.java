@@ -1,6 +1,7 @@
 package eu.paniw.timetable.pages.translation;
 
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -11,6 +12,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "translation/edit", alt = "translation/add")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation( { "ADMIN" })
 public class TranslationEditPage extends EditPage<Translation> {
 	public TranslationEditPage(PageParameters param) {
 		super(param, Translation.class, TranslationViewPage.class, TranslationListPage.class);

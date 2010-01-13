@@ -4,7 +4,7 @@ import net.databinder.models.hib.CriteriaBuilder;
 import net.databinder.models.hib.HibernateObjectModel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.PageParameters;
-import org.apache.wicket.markup.html.WebPage;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -20,14 +20,13 @@ import eu.paniw.timetable.TimeTableSession;
 import eu.paniw.timetable.domain.entity.User;
 
 @MountPath(path = "login")
-public class LoginPage extends WebPage {
+public class LoginPage extends BasePage {
 	public LoginPage(PageParameters param) {
 		super(param);
 		init();
 	}
 
 	private void init() {
-
 		LoginForm loginForm = new LoginForm("loginForm");
 		add(loginForm);
 	}
@@ -40,6 +39,11 @@ public class LoginPage extends WebPage {
 		public LoginForm(String id) {
 			super(id);
 
+			Label loginInfoL = new Label("loginInfo", new ResourceModel("loginInfo", "loginInfo"));
+			loginInfoL.setRenderBodyOnly(true);
+			loginInfoL.setEscapeModelStrings(false);
+			add(loginInfoL);
+			
 			TextField<String> loginTF = new TextField<String>("login", new PropertyModel<String>(this, "username"));
 			loginTF.setRequired(true);
 			add(loginTF);
@@ -49,7 +53,7 @@ public class LoginPage extends WebPage {
 			add(passwordPTF);
 
 			Button submitB = new Button("submit");
-			submitB.add(new AttributeModifier("value", true, new ResourceModel("submit", "submit")));
+			submitB.add(new AttributeModifier("value", true, new ResourceModel("loginbutton", "loginbutton")));
 			add(submitB);
 		}
 
@@ -79,6 +83,7 @@ public class LoginPage extends WebPage {
 				user = hom.getObject();
 				if(user != null && user.getPassword().equals(password)) {
 					TimeTableSession authSession = (TimeTableSession) getSession();
+					user.completeRoles();
 					authSession.setUser(user);
 				} else {
 					return false;

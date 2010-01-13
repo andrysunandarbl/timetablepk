@@ -1,17 +1,22 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>TimeTablePK - base page</title>
-</head>
-<body>
-
-<form wicket:id="loginForm">
-	Zaloguj się:<br />
-	<input type="text" wicket:id="login" />
-	<input type="password" wicket:id="password" />
-	<input type="submit" wicket:id="submit" />
-</form>
-
-</body>
-</html>
+<wicket:extend>
+	<div style="text-align: center; padding-bottom: 40px;">
+		<form wicket:id="loginForm">
+			<b><span wicket:id="loginInfo" /></b>
+			<table style="margin-top: 25px">
+				<tr>
+					<td style="width: 80px; text-aling: right"><wicket:message key="login"></wicket:message>:</td>
+					<td><input type="text" wicket:id="login" /></td>
+				</tr>
+				<tr>
+					<td style="width: 80px; text-aling: right"><wicket:message key="password"></wicket:message>:</td>
+					<td><input type="password" wicket:id="password" /></td>
+				</tr>
+				<tr>
+					<td></td>
+					<td style="text-align: right"></td>
+				</tr>
+			</table>
+			<input type="submit" wicket:id="submit" style="width:120px" />
+		</form>
+	</div>
+</wicket:extend>

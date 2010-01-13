@@ -1,6 +1,7 @@
 package eu.paniw.timetable.domain.entity;
 
 import java.util.HashMap;
+import eu.paniw.timetable.algorithm.SchedulerAlgorithm;
 
 public class Schedule {
 	private HashMap<Day, ScheduleDay> schedule;
@@ -12,10 +13,9 @@ public class Schedule {
 		}
 	}
 
-	// public static Schedule create(SchedulerAlgorithm algorithm) throws
-	// Exception {
-	// return algorithm.generate();
-	// }
+	public static Schedule create(SchedulerAlgorithm algorithm) throws Exception {
+		return algorithm.generate();
+	}
 
 	public static Schedule create() {
 		return new Schedule();

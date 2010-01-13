@@ -149,6 +149,24 @@ public class MenuSortableDataProvider extends AbstractSortableDataProvider<Menu>
 						return sortParam.isAscending() ? result : -result;
 					}
 				});
+			} else if(sortParam.getProperty().equals("role")) {
+				Collections.sort(sortItems, new Comparator<Menu>() {
+					public int compare(Menu arg0, Menu arg1) {
+						int result;
+
+						if(arg0.getRole() != null && arg1.getRole() != null) {
+							result = arg0.getRole().compareTo(arg1.getRole());
+						} else if(arg0 == null) {
+							return -1;
+						} else if(arg1 == null) {
+							return 1;
+						} else {
+							return 0;
+						}
+
+						return sortParam.isAscending() ? result : -result;
+					}
+				});
 			}
 		}
 		return sortItems.subList(first, first + count);

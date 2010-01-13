@@ -10,7 +10,6 @@ public class TimeTableSession extends WebSession {
 
 	public TimeTableSession(Request request) {
 		super(request);
-
 	}
 
 	public User getUser() {

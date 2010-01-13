@@ -1,7 +1,9 @@
 package eu.paniw.timetable.pages.user;
 
+import java.util.Arrays;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
@@ -9,6 +11,7 @@ import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.validation.validator.StringValidator;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
+import eu.paniw.timetable.domain.app.UserAppRole;
 import eu.paniw.timetable.domain.entity.User;
 import eu.paniw.timetable.pages.EditPage;
 import eu.paniw.timetable.tool.PageParametersTool;
@@ -48,6 +51,12 @@ public class UserEditPage extends EditPage<User> {
 
 		CheckBox activeCB = new CheckBox("item", new PropertyModel<Boolean>(getFormModel(), "active"));
 		builder.addComponent(activeCB, "user.active");
+
+		DropDownChoice<UserAppRole> userAppRoleDDC = new DropDownChoice<UserAppRole>("item", new PropertyModel<UserAppRole>(
+				getFormModel(), "userAppRole"), Arrays.asList(UserAppRole.values()));
+		userAppRoleDDC.setRequired(true);
+		userAppRoleDDC.setNullValid(false);
+		builder.addComponent(userAppRoleDDC, "user.role");
 	}
 
 	@Override

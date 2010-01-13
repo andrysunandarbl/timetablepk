@@ -7,6 +7,7 @@ import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.markup.html.navigation.paging.AjaxPagingNavigator;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxFallbackHeadersToolbar;
 import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNavigationToolbar;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
@@ -19,6 +20,7 @@ import org.apache.wicket.model.Model;
 import eu.paniw.timetable.AbstractSortableDataProvider;
 import eu.paniw.timetable.Application;
 
+@AuthorizeInstantiation("USER")
 public abstract class ListPage<T extends Serializable> extends BasePage {
 	protected WebMarkupContainer wmc;
 	protected DataTable<T> dataTable;

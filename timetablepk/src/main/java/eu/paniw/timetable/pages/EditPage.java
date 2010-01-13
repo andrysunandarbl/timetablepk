@@ -5,12 +5,14 @@ import net.databinder.models.hib.HibernateObjectModel;
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
 import eu.paniw.timetable.Application;
 import eu.paniw.timetable.panel.FormBuilder;
 
+@AuthorizeInstantiation("USER")
 public abstract class EditPage<T extends Serializable> extends BasePage {
 	protected Class<T> clazz;
 	protected Class<? extends Page> responseAfterSave;
