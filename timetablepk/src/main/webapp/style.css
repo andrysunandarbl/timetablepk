@@ -1,4 +1,4 @@
-body, * {
+body,* {
 	margin: 0 auto;
 	float: none;
 	font-size: 12px;
@@ -68,8 +68,7 @@ div#topMenu a {
 	padding: 0px 20px 0px 20px;
 }
 
-
-div#topMenu a:link, div#topMenu a:visited, div#topMenu a:active {
+div#topMenu a:link,div#topMenu a:visited,div#topMenu a:active {
 	color: #002A3D;
 	text-decoration: none;
 	font-weight: bold;
@@ -101,7 +100,7 @@ div#menu a {
 	padding: 2px 0px 4px 12px;
 }
 
-div#menu a.main:link, div#menu a.main:visited, div#menu a.main:active {
+div#menu a.main:link,div#menu a.main:visited,div#menu a.main:active {
 	color: #000000;
 	text-decoration: none;
 	font-weight: bold;
@@ -115,7 +114,8 @@ div#menu a.main:hover {
 	text-decoration: underline;
 }
 
-div#menu a.second:link, div#menu a.second:visited, div#menu a.second:active {
+div#menu a.second:link,div#menu a.second:visited,div#menu a.second:active
+	{
 	color: #002A3D;
 	text-decoration: none;
 	font-weight: bold;
@@ -130,7 +130,7 @@ div#menu a.second:hover {
 	text-decoration: none;
 	margin-left: 15px;
 }
-	
+
 div#content {
 	float: right;
 	width: 709px;
@@ -139,7 +139,6 @@ div#content {
 	padding-right: 10px;
 	text-align: left;
 	vertical-align: top;
-	padding-bottom: 20px;
 }
 
 div#bottom {
@@ -158,9 +157,9 @@ table.listPage {
 	border: 1px solid #c1c9d5;
 }
 
-table.listPage td, table.listPage th {
+table.listPage td,table.listPage th {
 	padding: 5.5px;
-	text-align: left;	
+	text-align: left;
 }
 
 table.listPage * {
@@ -182,7 +181,7 @@ table.listPage tr.headers th {
 	height: 28px;
 }
 
-table.listPage tr.headers * {	
+table.listPage tr.headers * {
 	font-size: 13px;
 	text-decoration: none;
 	padding-bottom: 4px;
@@ -194,7 +193,7 @@ table.listPage tr.headers th.wicket_orderNone {
 }
 
 table.listPage tr.headers th.wicket_orderNone a.wicket_orderNone {
-
+	
 }
 
 table.listPage tr.headers th.wicket_orderUp {
@@ -205,10 +204,10 @@ table.listPage tr.headers th.wicket_orderUp {
 }
 
 table.listPage tr.headers th.wicket_orderUp a.wicket_orderUp {
-
+	
 }
 
-table.listPage tr.headers th.wicket_orderDown  {
+table.listPage tr.headers th.wicket_orderDown {
 	background-image: url('img/down.png');
 	background-repeat: no-repeat;
 	background-position: right top;
@@ -216,6 +215,7 @@ table.listPage tr.headers th.wicket_orderDown  {
 }
 
 table.listPage tr.headers th.wicket_orderDown a.wicket_orderDown {
+	
 }
 
 table.listPage tr.even {
@@ -225,4 +225,48 @@ table.listPage tr.even {
 table.listPage tr.odd {
 	background-color: #FFFFFF;
 }
-/* for table end */
+
+/* for table end */ /* for view builder start */
+table.viewBuilder {
+	width: 700px;
+	background-color: #3c567c;
+}
+
+table.viewBuilder,table.viewBuilder * {
+	text-align: left;
+	float: left;
+}
+
+table.viewBuilder tr {
+	clear: both;
+	width: 700px;
+}
+
+table.viewBuilderButtons {
+	width: 700px;
+}
+
+table.viewBuilderButtons td {
+	padding: 0px 15px 0px 0px;
+}
+
+table.viewBuilderItems {
+	width: 695px;
+	background-color: #ebe6ff;
+}
+
+table.viewBuilderItems tr {
+	width: 695px;
+	padding: 2px 0px 2px 0px;
+	border-bottom: 1px dotted #3c567c;
+}
+
+table.viewBuilderItems td.label {
+	width: 200px;
+	border-right: 1px dotted #3c567c;
+}
+
+table.viewBuilderItems td.value {
+	padding-left: 5px;
+}
+/* for view builder end */

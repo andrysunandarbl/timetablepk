@@ -1,7 +1,25 @@
 <wicket:panel>
 
-<input wicket:id="add" type="submit" /> <input wicket:id="edit" type="submit" /> <input wicket:id="back" type="submit" />
-			
-<span wicket:id="builder" />
+<table class="viewBuilder">
+	<tr>
+		<td>
+			<table class="viewBuilderButtons">
+				<tr>
+					<td><input wicket:id="add" type="submit" /></td>
+					<td><input wicket:id="edit" type="submit" /></td>
+					<td><input wicket:id="back" type="submit" /></td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+		
+	<tr>
+		<td>
+			<table class="viewBuilderItems">
+				<span wicket:id="builder" />
+			</table>
+		</td>
+	</tr>
+</table>
 
 </wicket:panel>
