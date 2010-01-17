@@ -69,7 +69,7 @@ public abstract class UnitDef implements Serializable {
 	public void setCourses(List<Course> courses) {
 		this.courses = courses;
 	}
-
+	
 	@ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH, CascadeType.PERSIST})
 	public UnitDef getParent() {
 		return parent;
