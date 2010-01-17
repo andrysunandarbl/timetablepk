@@ -3,6 +3,7 @@ package eu.paniw.timetable.pages.user;
 import java.util.ArrayList;
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
@@ -19,9 +20,10 @@ import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "user", alt = "users")
+@AuthorizeInstantiation("ADMIN")
 public class UserListPage extends ListPage<User> {
 	public UserListPage(PageParameters param) {
-		super(param, User.class);
+		super(param, "userTitle", User.class, UserEditPage.class);
 		init();
 	}
 

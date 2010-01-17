@@ -1,6 +1,7 @@
 package eu.paniw.timetable.pages.translation;
 
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -10,9 +11,10 @@ import eu.paniw.timetable.pages.ViewPage;
 
 @MountPath(path = "translation/view")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation("ADMIN")
 public class TranslationViewPage extends ViewPage<Translation> {
 	public TranslationViewPage(PageParameters param) {
-		super(param, Translation.class, TranslationListPage.class, TranslationEditPage.class);
+		super(param, "translationTitle", Translation.class, TranslationListPage.class, TranslationEditPage.class);
 		init();
 	}
 

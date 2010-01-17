@@ -3,12 +3,12 @@ package eu.paniw.timetable.pages.teacher;
 import java.util.List;
 import net.databinder.models.hib.HibernateListModel;
 import org.apache.wicket.PageParameters;
-import org.apache.wicket.extensions.markup.html.form.palette.Palette;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
 import org.wicketstuff.annotation.strategy.MountMixedParam;
+import eu.paniw.timetable.components.Palette;
 import eu.paniw.timetable.domain.entity.Course;
 import eu.paniw.timetable.domain.entity.Teacher;
 import eu.paniw.timetable.pages.EditPage;
@@ -18,7 +18,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountMixedParam(parameterNames = {"id"})
 public class TeacherEditPage extends EditPage<Teacher> {
 	public TeacherEditPage(PageParameters param) {
-		super(param, Teacher.class, TeacherViewPage.class, TeacherListPage.class);
+		super(param, "teacherTitle", Teacher.class, TeacherViewPage.class, TeacherListPage.class);
 		init();
 	}
 

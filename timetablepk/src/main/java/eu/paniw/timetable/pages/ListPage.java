@@ -3,6 +3,7 @@ package eu.paniw.timetable.pages;
 import java.io.Serializable;
 import java.util.List;
 import org.apache.wicket.AttributeModifier;
+import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -13,6 +14,7 @@ import org.apache.wicket.extensions.ajax.markup.html.repeater.data.table.AjaxNav
 import org.apache.wicket.extensions.markup.html.repeater.data.table.DataTable;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.navigation.paging.PagingNavigator;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.model.IModel;
@@ -27,10 +29,12 @@ public abstract class ListPage<T extends Serializable> extends BasePage {
 	protected Class<T> objectClass = null;
 	protected List<IColumn<T>> columns = null;
 	protected AbstractSortableDataProvider<T> asdp;
+	protected Class<? extends Page> addPage;
 
-	public ListPage(PageParameters param, Class<T> objectClass) {
-		super(param);
+	public ListPage(PageParameters param, String titleKey, Class<T> objectClass, Class<? extends Page> addPage) {
+		super(param, titleKey);
 		this.objectClass = objectClass;
+		this.addPage = addPage;
 
 		wmc = new WebMarkupContainer("listCon");
 		wmc.setOutputMarkupId(true);
@@ -39,9 +43,12 @@ public abstract class ListPage<T extends Serializable> extends BasePage {
 
 	@SuppressWarnings("unchecked")
 	protected void init() {
-		if(objectClass == null || asdp == null || columns == null) {
+		if(objectClass == null || asdp == null || columns == null || addPage == null) {
 			throw new RestartResponseAtInterceptPageException(((Application) getApplication()).getErrorPage());
 		}
+
+		BookmarkablePageLink<Page> addItemBPL = new BookmarkablePageLink<Page>("addNew", addPage);
+		wmc.add(addItemBPL);
 
 		dataTable = new DataTable<T>("dataTable", (IColumn<T>[]) columns.toArray(new IColumn[columns.size()]), asdp,
 				ROW_PER_PAGE) {

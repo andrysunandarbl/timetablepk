@@ -1,6 +1,7 @@
 package eu.paniw.timetable.pages.unitdef;
 
 import java.util.ArrayList;
+import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.PropertyColumn;
@@ -9,8 +10,8 @@ import eu.paniw.timetable.domain.entity.UnitDef;
 import eu.paniw.timetable.pages.ListPage;
 
 public abstract class UnitDefListPage<T extends UnitDef> extends ListPage<T> {
-	public UnitDefListPage(PageParameters param, Class<T> objectClass) {
-		super(param, objectClass);
+	public UnitDefListPage(PageParameters param, String titleKey, Class<T> objectClass, Class<? extends Page> addPage) {
+		super(param, titleKey, objectClass, addPage);
 		preInit();
 	}
 

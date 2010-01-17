@@ -1,0 +1,18 @@
+<wicket:panel>
+	<div class="schedule">
+		<table style="float: left; clear: both; padding:bottom: 15px; width: 655px;">
+			<tr>
+				<td style="width: 55px; text-align: right; text-decoration: underline"><wicket:message key="scheduleName">scheduleName</wicket:message>:</td>
+				<td style="width: 500px; text-align: left; font-weight: bold"><span wicket:id="scheduleName" /></td>
+				<td style="width: 100px; text-align: right"><a wicket:id="delete"><wicket:message key="app.delete">delete</wicket:message></a></td>
+			</tr>
+			<tr>
+				<td style="width: 55px; text-align: right; text-decoration: underline"><wicket:message key="scheduleDescription">scheduleDescription</wicket:message>:</td>
+				<td style="width: 500px; text-align: left;"><span wicket:id="scheduleDescription" /></td>
+				<td></td>
+			</tr>
+		</table>
+		
+		<div wicket:id="dayRV"></div>
+	</div>
+</wicket:panel>

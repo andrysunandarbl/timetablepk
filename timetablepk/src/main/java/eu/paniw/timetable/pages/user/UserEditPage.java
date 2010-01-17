@@ -2,6 +2,7 @@ package eu.paniw.timetable.pages.user;
 
 import java.util.Arrays;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -18,9 +19,13 @@ import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "user/edit", alt = "user/add")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation("ADMIN")
 public class UserEditPage extends EditPage<User> {
+	private String passwordRe;
+	private String password;
+
 	public UserEditPage(PageParameters param) {
-		super(param, User.class, UserViewPage.class, UserListPage.class);
+		super(param, "userTitle", User.class, UserViewPage.class, UserListPage.class);
 		init();
 	}
 
@@ -33,11 +38,18 @@ public class UserEditPage extends EditPage<User> {
 		userNameTF.add(StringValidator.minimumLength(3));
 		builder.addComponent(userNameTF, "user.userName");
 
+		PasswordTextField passwordTextField = new PasswordTextField("item", new PropertyModel<String>(this, "password"));
+		builder.addComponent(passwordTextField, "user.password");
+
+		PasswordTextField passwordReTextField = new PasswordTextField("item", new PropertyModel<String>(this, "passwordRe"));;
+		builder.addComponent(passwordReTextField, "user.passwordRe");
+
 		if(id == null) {
-			PasswordTextField passwordTextField = new PasswordTextField("item", new PropertyModel<String>(getFormModel(),
-					"password"));
 			passwordTextField.setRequired(true);
-			builder.addComponent(passwordTextField, "user.password");
+			passwordReTextField.setRequired(true);
+		} else {
+			passwordTextField.setRequired(false);
+			passwordReTextField.setRequired(false);
 		}
 
 		TextField<String> firstnameTF = new TextField<String>("item", new PropertyModel<String>(getFormModel(), "firstname"));
@@ -57,6 +69,19 @@ public class UserEditPage extends EditPage<User> {
 		userAppRoleDDC.setRequired(true);
 		userAppRoleDDC.setNullValid(false);
 		builder.addComponent(userAppRoleDDC, "user.role");
+	}
+
+	@Override
+	public void onBeforeSubmit() {
+		if(password != null && passwordRe != null) {
+			if(password.equals(passwordRe)) {
+				getFormModel().getObject().setPassword(password);
+			} else {
+				getPage().error(getString("passwordDontMatch", null, "passwordDontMatch"));
+			}
+		} else if(password != null || passwordRe != null) {
+			getPage().error(getString("repeatPassword", null, "repeatPassword"));
+		}
 	}
 
 	@Override

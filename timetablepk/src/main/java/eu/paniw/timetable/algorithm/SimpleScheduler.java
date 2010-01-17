@@ -1,12 +1,20 @@
 package eu.paniw.timetable.algorithm;
 
-import eu.paniw.timetable.domain.entity.*;
-
+import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Queue;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.ArrayList;
+import java.util.Queue;
+import eu.paniw.timetable.domain.entity.Course;
+import eu.paniw.timetable.domain.entity.Day;
+import eu.paniw.timetable.domain.entity.Room;
+import eu.paniw.timetable.domain.entity.Schedule;
+import eu.paniw.timetable.domain.entity.ScheduleDay;
+import eu.paniw.timetable.domain.entity.ScheduleItem;
+import eu.paniw.timetable.domain.entity.ScheduleRow;
+import eu.paniw.timetable.domain.entity.Teacher;
+import eu.paniw.timetable.domain.entity.Unit;
+import eu.paniw.timetable.domain.entity.UnitDef;
 
 public class SimpleScheduler implements SchedulerAlgorithm {
 	public SchedulerInput input = null;
@@ -19,26 +27,19 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 
 	@Override
 	public Schedule generate() throws Exception {
-		if (input == null) {
+		if(input == null) {
 			throw new Exception("SimpleScheduler is not initialized or null");
 		}
 
 		int maxItemsAtRow = calculateMaxItemsAtRow();
+
 		Queue<ScheduleItem> availableItems = createAvailableItemsQueue();
 		ScheduleRow row = null;
 		Queue<ScheduleRow> filledRows = new LinkedList<ScheduleRow>();
 
-		while (availableItems.size() != 0) {
+		while(availableItems.size() != 0) {
 			row = createScheduledRow(availableItems, maxItemsAtRow);
 			filledRows.add(row);
-			/*
-			System.out.println("RowSize: "+row.size()+"\tAvailItemSize: "+ availableItems.size());
-			for(ScheduleItem item: row.getItems()) {
-				System.out.print("\t"+item.getUnit().getName()+" "+ item.getCourse().getName()+" ");
-				System.out.println(item.getTeacher().getSurname()+ " " + item.getRoom().getName());
-			}
-			System.out.print("\n");
-			*/
 		}
 
 		Schedule schedule = Schedule.create();
@@ -49,44 +50,40 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 
 	private void fillSchedule(Schedule schedule, Queue<ScheduleRow> filledRows, List<String> times) {
 		int maxRowsAtDay = input.getMaxRowsAtDay();
-		for (Day day : Day.values()) {
+		for(Day day : Day.values()) {
 			ScheduleDay sday = new ScheduleDay(day);
-			for (int i = 0; i < maxRowsAtDay && filledRows.size() > 0; i++) {
+			for(int i = 0; i < maxRowsAtDay && filledRows.size() > 0; i++) {
 				ScheduleRow row = filledRows.poll();
-				for(ScheduleItem item: row.getItems()) {
+				for(ScheduleItem item : row.getItems()) {
 					item.setBeginTime(times.get(i));
 				}
 				sday.add(row);
 			}
-			schedule.set(day, sday);
+			schedule.getScheduleDays().add(sday);
 		}
-
 	}
 
-	private ScheduleRow createScheduledRow(Queue<ScheduleItem> availableItems,
-			int maxItemsAtRow) {
+	private ScheduleRow createScheduledRow(Queue<ScheduleItem> availableItems, int maxItemsAtRow) {
 		ScheduleRow row = new ScheduleRow();
 		int maxFindingLoopCount = availableItems.size();
 		int findingLoopCounter = 0;
-		while (row.size() < maxItemsAtRow
-				&& findingLoopCounter < maxFindingLoopCount) {
+		while(row.size() < maxItemsAtRow && findingLoopCounter < maxFindingLoopCount) {
 			findingLoopCounter += 1;
 			ScheduleItem item = availableItems.poll();
-			if (item == null) {
+			if(item == null) {
 				break;
 			}
-			if (isUnitAlreadyInRow(item.getUnit(), row) == true) {
+			if(isUnitAlreadyInRow(item.getUnit(), row) == true) {
 				availableItems.add(item);
 				continue;
 			}
 			Teacher teacher = findFreeTeacher(item.getCourse(), row);
-			if (teacher == null) {
+			if(teacher == null) {
 				availableItems.add(item);
 				continue;
 			}
-			Room room = findFreeRoom(item.getCourse().getLecture(), item
-					.getUnit().getCount(), row);
-			if (room == null) {
+			Room room = findFreeRoom(item.getCourse().getLecture(), item.getUnit().getCount(), row);
+			if(room == null) {
 				availableItems.add(item);
 				continue;
 			}
@@ -101,19 +98,19 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 		Room roomResult = null;
 		boolean isInRow = false;
 		List<Room> rooms = input.getRooms();
-		if (row.size() == rooms.size()) {
+		if(row.size() == rooms.size()) {
 			return null;
 		}
-		for (Room room : rooms) {
-			if (room.getLecture() == lecture && room.getCapacity() >= count) {
+		for(Room room : rooms) {
+			if(room.getLecture() == lecture && room.getCapacity() >= count) {
 				isInRow = false;
-				for (ScheduleItem item : row.getItems()) {
-					if (item.getRoom().getId() == room.getId()) {
+				for(ScheduleItem item : row.getItems()) {
+					if(item.getRoom().getId() == room.getId()) {
 						isInRow = true;
 						break;
 					}
 				}
-				if (isInRow == false) {
+				if(isInRow == false) {
 					roomResult = room;
 					break;
 				}
@@ -126,19 +123,19 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 		Teacher teacherResult = null;
 		boolean isInRow = false;
 		List<Teacher> teachers = input.getTeachers();
-		if (row.size() == teachers.size()) {
+		if(row.size() == teachers.size()) {
 			return null;
 		}
-		for (Teacher teacher : teachers) {
-			if (canTeacherLearn(teacher, course) == true) {
+		for(Teacher teacher : teachers) {
+			if(canTeacherLearn(teacher, course) == true) {
 				isInRow = false;
-				for (ScheduleItem item : row.getItems()) {
-					if (item.getTeacher().getId() == teacher.getId()) {
+				for(ScheduleItem item : row.getItems()) {
+					if(item.getTeacher().getId() == teacher.getId()) {
 						isInRow = true;
 						break;
 					}
 				}
-				if (isInRow == false) {
+				if(isInRow == false) {
 					teacherResult = teacher;
 					break;
 				}
@@ -150,8 +147,8 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 	private boolean canTeacherLearn(Teacher teacher, Course course) {
 		List<Course> courses = teacher.getCourses();
 		boolean result = false;
-		for (Course teacherCourse : courses) {
-			if (teacherCourse.getId() == course.getId()) {
+		for(Course teacherCourse : courses) {
+			if(teacherCourse.getId() == course.getId()) {
 				result = true;
 				break;
 			}
@@ -162,19 +159,18 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 	private boolean isUnitAlreadyInRow(UnitDef unitdef, ScheduleRow row) {
 
 		boolean isUnitInRow = false;
-		Unit unit = unitdef.getParent() == null ? (Unit) unitdef
-				: (Unit) unitdef.getParent();
+		Unit unit = unitdef.getParent() == null ? (Unit) unitdef : (Unit) unitdef.getParent();
 
-		for (ScheduleItem sitem : row.getItems()) {
+		for(ScheduleItem sitem : row.getItems()) {
 			UnitDef item = sitem.getUnit();
 			UnitDef parent = item.getParent();
-			if (parent == null) {
-				if (unit.getId() == item.getId()) {
+			if(parent == null) {
+				if(unit.getId() == item.getId()) {
 					isUnitInRow = true;
 					break;
 				}
 			} else {
-				if (unit.getId() == parent.getId()) {
+				if(unit.getId() == parent.getId()) {
 					isUnitInRow = true;
 					break;
 				}
@@ -195,18 +191,18 @@ public class SimpleScheduler implements SchedulerAlgorithm {
 		return min;
 	}
 
-	
 	private Queue<ScheduleItem> createAvailableItemsQueue() {
 		ArrayList<ScheduleItem> items = new ArrayList<ScheduleItem>();
-		for (UnitDef unit : input.getUnits()) {
-			for (Course course : unit.getCourses()) {
+
+		for(UnitDef unit : input.getUnits()) {
+			for(Course course : unit.getCourses()) {
 				ScheduleItem item = new ScheduleItem();
 				item.setUnit(unit);
 				item.setCourse(course);
 				items.add(item);
 			}
 		}
-		if(input.isRandomInput()==true) {
+		if(input.isRandomInput() == true) {
 			Collections.shuffle(items);
 		}
 		return new LinkedList<ScheduleItem>(items);

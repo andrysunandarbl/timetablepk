@@ -23,6 +23,7 @@ public class LinksPanel extends Panel {
 
 	public LinksPanel addLink(Link<?> link, String labelKey) {
 		Label linkLabel = new Label("linkLabel", getLocalizer().getString(labelKey, link, labelKey));
+		linkLabel.setRenderBodyOnly(true);
 		link.add(linkLabel);
 
 		WebMarkupContainer wmc = new WebMarkupContainer(links.newChildId());

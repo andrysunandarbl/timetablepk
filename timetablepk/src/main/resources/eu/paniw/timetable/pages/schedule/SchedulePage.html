@@ -1,0 +1,21 @@
+<wicket:extend>
+	<form wicket:id="scheduleForm">
+	<table style="float: left; clear: both">
+		<tr>
+			<td style="width: 75px; text-align: right;"><wicket:message key="scheduleName">scheduleName</wicket:message>:</td>
+			<td style="width: 170px;"><input wicket:id="scheduleName"
+				type="text" /></td>
+		</tr>
+		<tr>
+			<td style="width: 75px; text-align: right;"><wicket:message key="scheduleDescription">scheduleDescription</wicket:message>:</td>
+			<td><textarea wicket:id="scheduleDescription" cols="18" rows="3"></textarea></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td style="text-align: right"><input type="submit" wicket:id="scheduleOrder" /></td>
+		</tr>
+	</table>
+	</form>
+
+	<div wicket:id="schedules"></div>
+</wicket:extend>

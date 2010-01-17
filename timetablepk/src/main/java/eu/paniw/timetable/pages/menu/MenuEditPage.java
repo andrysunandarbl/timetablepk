@@ -3,6 +3,7 @@ package eu.paniw.timetable.pages.menu;
 import java.util.Arrays;
 import net.databinder.models.hib.HibernateListModel;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.ChoiceRenderer;
 import org.apache.wicket.markup.html.form.DropDownChoice;
@@ -20,10 +21,11 @@ import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "menu/edit", alt = "menu/add")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation("ADMIN")
 public class MenuEditPage extends EditPage<Menu> {
 
 	public MenuEditPage(PageParameters param) {
-		super(param, Menu.class, MenuViewPage.class, MenuListPage.class);
+		super(param, "menuTitle", Menu.class, MenuViewPage.class, MenuListPage.class);
 		init();
 	}
 

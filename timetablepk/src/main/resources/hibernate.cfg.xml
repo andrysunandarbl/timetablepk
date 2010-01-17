@@ -26,5 +26,9 @@
 		<mapping class="eu.paniw.timetable.domain.entity.User" />
 		<mapping class="eu.paniw.timetable.domain.app.Menu" />
 		<mapping class="eu.paniw.timetable.domain.app.Translation" />
+		<mapping class="eu.paniw.timetable.domain.entity.ScheduleDay" />
+		<mapping class="eu.paniw.timetable.domain.entity.ScheduleRow" />
+		<mapping class="eu.paniw.timetable.domain.entity.ScheduleItem" />
+		<mapping class="eu.paniw.timetable.domain.entity.Schedule" />
 	</session-factory>
 </hibernate-configuration>

@@ -10,9 +10,9 @@ import eu.paniw.timetable.pages.EditPage;
 import eu.paniw.timetable.tool.PageParametersTool;
 
 public abstract class UnitDefEditPage<T extends UnitDef> extends EditPage<T> {
-	public UnitDefEditPage(PageParameters param, Class<T> clazz, Class<? extends Page> responseAfterSave,
+	public UnitDefEditPage(PageParameters param, String titleKey, Class<T> clazz, Class<? extends Page> responseAfterSave,
 			Class<? extends Page> responseAfterCancel) {
-		super(param, clazz, responseAfterSave, responseAfterCancel);
+		super(param, titleKey, clazz, responseAfterSave, responseAfterCancel);
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public abstract class UnitDefEditPage<T extends UnitDef> extends EditPage<T> {
 	}
 
 	@Override
-	public void onAfterSubmit() {
+	protected void onAfterSubmit() {
 		responseParam = new PageParametersTool("id", getFormModel().getObject().getId()).getPP();
 	}
 }

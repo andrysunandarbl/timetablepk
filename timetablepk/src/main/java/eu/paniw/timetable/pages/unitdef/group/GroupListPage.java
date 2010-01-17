@@ -19,7 +19,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountPath(path = "group", alt = "groups")
 public class GroupListPage extends UnitDefListPage<Group> {
 	public GroupListPage(PageParameters param) {
-		super(param, Group.class);
+		super(param, "groupTitle", Group.class, GroupEditPage.class);
 		init();
 	}
 
@@ -37,8 +37,8 @@ public class GroupListPage extends UnitDefListPage<Group> {
 								.getObject().getId()).getPP()), "app.view").addLink(
 						new BookmarkablePageLink<Page>("link", GroupEditPage.class, new PageParametersTool("id", rowModel
 								.getObject().getId()).getPP()), "app.edit").addLink(
-						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.actions", null, "app.actions"),
-								asdp, wmc), "app.delete"));
+						LinkTool.getDeleteLink("link", rowModel.getObject(), getString("app.delquestion", null,
+								"app.delquestion"), asdp, wmc), "app.delete"));
 			}
 		});
 

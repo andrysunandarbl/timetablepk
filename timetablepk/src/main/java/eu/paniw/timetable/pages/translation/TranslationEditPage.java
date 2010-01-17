@@ -12,10 +12,10 @@ import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "translation/edit", alt = "translation/add")
 @MountMixedParam(parameterNames = {"id"})
-@AuthorizeInstantiation( { "ADMIN" })
+@AuthorizeInstantiation("ADMIN")
 public class TranslationEditPage extends EditPage<Translation> {
 	public TranslationEditPage(PageParameters param) {
-		super(param, Translation.class, TranslationViewPage.class, TranslationListPage.class);
+		super(param, "translationTitle", Translation.class, TranslationViewPage.class, TranslationListPage.class);
 		init();
 	}
 

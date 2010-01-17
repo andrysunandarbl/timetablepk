@@ -10,7 +10,7 @@ import eu.paniw.timetable.pages.unitdef.UnitDefViewPage;
 @MountMixedParam(parameterNames = {"id"})
 public class UnitViewPage extends UnitDefViewPage<Unit> {
 	public UnitViewPage(PageParameters param) {
-		super(param, Unit.class, UnitListPage.class, UnitEditPage.class);
+		super(param, "unitTitle", Unit.class, UnitListPage.class, UnitEditPage.class);
 		init();
 	}
 

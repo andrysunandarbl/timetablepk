@@ -95,7 +95,7 @@ public class User implements Serializable {
 	public String getUnifyName() {
 		return firstname + " " + surname + " (" + userName + ")";
 	}
-	
+
 	@Transient
 	private Roles roles;
 
@@ -103,11 +103,11 @@ public class User implements Serializable {
 	public Roles completeRoles() {
 		roles = new Roles();
 		roles.add(userAppRole.name());
-		
+
 		if(!userAppRole.equals(UserAppRole.USER)) {
 			roles.add(UserAppRole.USER.name());
 		}
-		
+
 		return roles;
 	}
 

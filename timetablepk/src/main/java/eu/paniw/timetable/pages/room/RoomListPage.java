@@ -21,7 +21,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountPath(path = "room", alt = "rooms")
 public class RoomListPage extends ListPage<Room> {
 	public RoomListPage(PageParameters param) {
-		super(param, Room.class);
+		super(param, "roomTitle", Room.class, RoomEditPage.class);
 		init();
 	}
 

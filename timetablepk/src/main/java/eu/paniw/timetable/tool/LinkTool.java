@@ -3,6 +3,7 @@ package eu.paniw.timetable.tool;
 import java.io.Serializable;
 import net.databinder.hib.Databinder;
 import org.apache.wicket.Component;
+import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.ajax.IAjaxCallDecorator;
 import org.apache.wicket.ajax.calldecorator.AjaxPreprocessingCallDecorator;
@@ -44,6 +45,42 @@ public class LinkTool {
 				} catch(HibernateException exc) {
 					session.getTransaction().rollback();
 					exc.printStackTrace();
+				}
+			}
+		};
+
+		return link;
+	}
+
+	public static <T extends Serializable> IndicatingAjaxFallbackLink<T> getDeleteLink(String id, final T obj,
+			final String question, final Class<? extends Page> responsePage) {
+		IndicatingAjaxFallbackLink<T> link = new IndicatingAjaxFallbackLink<T>(id, new Model<T>(obj)) {
+			private static final long serialVersionUID = 5820423634859354605L;
+
+			@Override
+			protected IAjaxCallDecorator getAjaxCallDecorator() {
+				return new AjaxPreprocessingCallDecorator(super.getAjaxCallDecorator()) {
+					private static final long serialVersionUID = 2516878799034321457L;
+
+					@Override
+					public CharSequence preDecorateScript(CharSequence script) {
+						return "if(!confirm('" + question + "')) return false;" + script;
+					}
+				};
+			}
+
+			@Override
+			public void onClick(AjaxRequestTarget target) {
+				Session session = Databinder.getHibernateSession();
+				try {
+					session.beginTransaction();
+					session.delete(obj);
+					session.getTransaction().commit();
+				} catch(HibernateException exc) {
+					session.getTransaction().rollback();
+					exc.printStackTrace();
+				} finally {
+					setResponsePage(responsePage);
 				}
 			}
 		};

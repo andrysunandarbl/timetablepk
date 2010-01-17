@@ -4,6 +4,7 @@ import net.databinder.models.hib.CriteriaBuilder;
 import net.databinder.models.hib.HibernateObjectModel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
@@ -22,11 +23,15 @@ import eu.paniw.timetable.domain.entity.User;
 @MountPath(path = "login")
 public class LoginPage extends BasePage {
 	public LoginPage(PageParameters param) {
-		super(param);
+		super(param, "loginTitle");
 		init();
 	}
 
 	private void init() {
+		if(((TimeTableSession) getSession()).isUserLoggedIn()) {
+			throw new RestartResponseAtInterceptPageException(HomePage.class);
+		}
+
 		LoginForm loginForm = new LoginForm("loginForm");
 		add(loginForm);
 	}
@@ -43,13 +48,13 @@ public class LoginPage extends BasePage {
 			loginInfoL.setRenderBodyOnly(true);
 			loginInfoL.setEscapeModelStrings(false);
 			add(loginInfoL);
-			
+
 			TextField<String> loginTF = new TextField<String>("login", new PropertyModel<String>(this, "username"));
 			loginTF.setRequired(true);
 			add(loginTF);
 
 			PasswordTextField passwordPTF = new PasswordTextField("password", new PropertyModel<String>(this, "password"));
-			passwordPTF.setRequired(false);
+			passwordPTF.setRequired(true);
 			add(passwordPTF);
 
 			Button submitB = new Button("submit");
@@ -60,9 +65,11 @@ public class LoginPage extends BasePage {
 		@Override
 		protected void onSubmit() {
 			if(checkUser()) {
-				setResponsePage(HomePage.class);
+				if(!continueToOriginalDestination()) {
+					setResponsePage(HomePage.class);
+				}
 			} else {
-				getPage().error("Failed");
+				getPage().error(getString("loginFail", null, "loginFail"));
 			}
 		}
 

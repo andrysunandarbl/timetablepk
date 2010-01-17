@@ -12,7 +12,7 @@ import eu.paniw.timetable.pages.ViewPage;
 @MountMixedParam(parameterNames = {"id"})
 public class CourseViewPage extends ViewPage<Course> {
 	public CourseViewPage(PageParameters param) {
-		super(param, Course.class, CourseListPage.class, CourseEditPage.class);
+		super(param, "courseTitle", Course.class, CourseListPage.class, CourseEditPage.class);
 		init();
 	}
 

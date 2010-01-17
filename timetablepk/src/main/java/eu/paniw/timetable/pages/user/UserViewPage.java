@@ -1,6 +1,7 @@
 package eu.paniw.timetable.pages.user;
 
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -10,9 +11,10 @@ import eu.paniw.timetable.pages.ViewPage;
 
 @MountPath(path = "user/view")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation("ADMIN")
 public class UserViewPage extends ViewPage<User> {
 	public UserViewPage(PageParameters param) {
-		super(param, User.class, UserListPage.class, UserEditPage.class);
+		super(param, "userTitle", User.class, UserListPage.class, UserEditPage.class);
 		init();
 	}
 

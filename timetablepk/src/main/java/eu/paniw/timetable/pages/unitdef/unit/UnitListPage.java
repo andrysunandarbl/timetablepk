@@ -18,7 +18,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountPath(path = "unit", alt = "units")
 public class UnitListPage extends UnitDefListPage<Unit> {
 	public UnitListPage(PageParameters param) {
-		super(param, Unit.class);
+		super(param, "unitTitle", Unit.class, UnitEditPage.class);
 		init();
 	}
 
