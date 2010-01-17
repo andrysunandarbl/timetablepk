@@ -5,7 +5,7 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <meta name="Author" content="Grzegorz Paniw" />
 
-  <title>TYTUŁ</title>
+  <title>TimeTable PK</title>
 
   <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -15,7 +15,7 @@
 	<div id="top">
 		<div id="logo"></div>
 		<div id="logoPkTxt"></div>
-		<div id="logoAppTxt"></div>
+		<div id="logoAppTxt"><a wicket:id="plLang" class="lang">PL</a> :: <a wicket:id="enLang" class="lang">EN</a></div>
 	</div>
 	
 	<div id="topMenu">
@@ -26,7 +26,8 @@
 			<span wicket:id="menuMain" />
 		</div>
 		<div id="content">
-			<span wicket:id="feedback" /><br /><br />
+			<br /><h3>TimeTable PK :: <span wicket:id="pageTitle" /></h3>
+			<span wicket:id="feedback" /><br />
 			<wicket:child />
 		</div>
 	</div>

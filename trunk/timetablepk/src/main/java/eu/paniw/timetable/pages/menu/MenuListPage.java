@@ -3,6 +3,7 @@ package eu.paniw.timetable.pages.menu;
 import java.util.ArrayList;
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.extensions.markup.html.repeater.data.grid.ICellPopulator;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.AbstractColumn;
 import org.apache.wicket.extensions.markup.html.repeater.data.table.IColumn;
@@ -19,9 +20,10 @@ import eu.paniw.timetable.tool.LinkTool;
 import eu.paniw.timetable.tool.PageParametersTool;
 
 @MountPath(path = "menu", alt = "menus")
+@AuthorizeInstantiation("ADMIN")
 public class MenuListPage extends ListPage<Menu> {
 	public MenuListPage(PageParameters param) {
-		super(param, Menu.class);
+		super(param, "menuTitle", Menu.class, MenuEditPage.class);
 		init();
 	}
 

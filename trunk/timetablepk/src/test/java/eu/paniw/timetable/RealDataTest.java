@@ -357,150 +357,144 @@ public class RealDataTest extends TestCase {
 		t46.setEnTranslation("Password");
 		session.save(t46);
 
-		 Translation t47 = new Translation();
-		 t47.setKey("loginbutton");
-		 t47.setPlTranslation("Zaloguj");
-		 t47.setEnTranslation("Login");
-		 session.save(t47);
-				
-		// Translation t48 = new Translation();
-		// t48.setKey(key);
-		// t48.setPlTranslation(plTranslation);
-		// t48.setEnTranslation(enTranslation);
-		// session.save(t48);
-		//		
-		// Translation t49 = new Translation();
-		// t49.setKey(key);
-		// t49.setPlTranslation(plTranslation);
-		// t49.setEnTranslation(enTranslation);
-		// session.save(t49);
-		//		
-		// Translation t50 = new Translation();
-		// t50.setKey(key);
-		// t50.setPlTranslation(plTranslation);
-		// t50.setEnTranslation(enTranslation);
-		// session.save(t50);
-		//		
-		// Translation t51 = new Translation();
-		// t51.setKey(key);
-		// t51.setPlTranslation(plTranslation);
-		// t51.setEnTranslation(enTranslation);
-		// session.save(t51);
-		//		
-		// Translation t52 = new Translation();
-		// t52.setKey(key);
-		// t52.setPlTranslation(plTranslation);
-		// t52.setEnTranslation(enTranslation);
-		// session.save(t52);
-		//		
-		// Translation t53 = new Translation();
-		// t53.setKey(key);
-		// t53.setPlTranslation(plTranslation);
-		// t53.setEnTranslation(enTranslation);
-		// session.save(t53);
-		//		
-		// Translation t54 = new Translation();
-		// t54.setKey(key);
-		// t54.setPlTranslation(plTranslation);
-		// t54.setEnTranslation(enTranslation);
-		// session.save(t54);
-		//		
-		// Translation t55 = new Translation();
-		// t55.setKey(key);
-		// t55.setPlTranslation(plTranslation);
-		// t55.setEnTranslation(enTranslation);
-		// session.save(t55);
-		//		
-		// Translation t56 = new Translation();
-		// t56.setKey(key);
-		// t56.setPlTranslation(plTranslation);
-		// t56.setEnTranslation(enTranslation);
-		// session.save(t56);
-		//		
-		// Translation t57 = new Translation();
-		// t57.setKey(key);
-		// t57.setPlTranslation(plTranslation);
-		// t57.setEnTranslation(enTranslation);
-		// session.save(t57);
-		//		
-		// Translation t58 = new Translation();
-		// t58.setKey(key);
-		// t58.setPlTranslation(plTranslation);
-		// t58.setEnTranslation(enTranslation);
-		// session.save(t58);
-		//		
-		// Translation t59 = new Translation();
-		// t59.setKey(key);
-		// t59.setPlTranslation(plTranslation);
-		// t59.setEnTranslation(enTranslation);
-		// session.save(t59);
-		//		
-		// Translation t60 = new Translation();
-		// t60.setKey(key);
-		// t60.setPlTranslation(plTranslation);
-		// t60.setEnTranslation(enTranslation);
-		// session.save(t60);
-		//		
-		// Translation t61 = new Translation();
-		// t61.setKey(key);
-		// t61.setPlTranslation(plTranslation);
-		// t61.setEnTranslation(enTranslation);
-		// session.save(t61);
-		//		
-		// Translation t62 = new Translation();
-		// t62.setKey(key);
-		// t62.setPlTranslation(plTranslation);
-		// t62.setEnTranslation(enTranslation);
-		// session.save(t62);
-		//		
-		// Translation t63 = new Translation();
-		// t63.setKey(key);
-		// t63.setPlTranslation(plTranslation);
-		// t63.setEnTranslation(enTranslation);
-		// session.save(t63);
-		//		
-		// Translation t64 = new Translation();
-		// t64.setKey(key);
-		// t64.setPlTranslation(plTranslation);
-		// t64.setEnTranslation(enTranslation);
-		// session.save(t64);
-		//		
-		// Translation t65 = new Translation();
-		// t65.setKey(key);
-		// t65.setPlTranslation(plTranslation);
-		// t65.setEnTranslation(enTranslation);
-		// session.save(t65);
-		//		
-		// Translation t66 = new Translation();
-		// t66.setKey(key);
-		// t66.setPlTranslation(plTranslation);
-		// t66.setEnTranslation(enTranslation);
-		// session.save(t66);
-		//		
-		// Translation t67 = new Translation();
-		// t67.setKey(key);
-		// t67.setPlTranslation(plTranslation);
-		// t67.setEnTranslation(enTranslation);
-		// session.save(t67);
-		//		
-		// Translation t68= new Translation();
-		// t68.setKey(key);
-		// t68.setPlTranslation(plTranslation);
-		// t68.setEnTranslation(enTranslation);
-		// session.save(t68);
-		//		
-		// Translation t69 = new Translation();
-		// t69.setKey(key);
-		// t69.setPlTranslation(plTranslation);
-		// t69.setEnTranslation(enTranslation);
-		// session.save(t69);
-		//		
-		// Translation t70 = new Translation();
-		// t70.setKey(key);
-		// t70.setPlTranslation(plTranslation);
-		// t70.setEnTranslation(enTranslation);
-		// session.save(t70);
-		//		
+		Translation t47 = new Translation();
+		t47.setKey("loginbutton");
+		t47.setPlTranslation("Zaloguj");
+		t47.setEnTranslation("Login");
+		session.save(t47);
+
+		Translation t48 = new Translation();
+		t48.setKey("unit.groups");
+		t48.setPlTranslation("Grupy");
+		t48.setEnTranslation("Groups");
+		session.save(t48);
+
+		Translation t49 = new Translation();
+		t49.setKey("loginFail");
+		t49.setPlTranslation("Login i/lub hasło są nieprawidłowe");
+		t49.setEnTranslation("Login and/or password are incorrect");
+		session.save(t49);
+
+		Translation t50 = new Translation();
+		t50.setKey("user.passwordRe");
+		t50.setPlTranslation("Powtórz hasło");
+		t50.setEnTranslation("Repeat password");
+		session.save(t50);
+
+		Translation t51 = new Translation();
+		t51.setKey("passwordDontMatch");
+		t51.setPlTranslation("Hasła nie zgadzają się!");
+		t51.setEnTranslation("Passwords don't match");
+		session.save(t51);
+
+		Translation t52 = new Translation();
+		t52.setKey("repeatPassword");
+		t52.setPlTranslation("Proszę powtórzyć hasło");
+		t52.setEnTranslation("Please repeat password");
+		session.save(t52);
+
+		Translation t54 = new Translation();
+		t54.setKey("scheduleName");
+		t54.setPlTranslation("Nazwa");
+		t54.setEnTranslation("Name");
+		session.save(t54);
+
+		Translation t55 = new Translation();
+		t55.setKey("scheduleDescription");
+		t55.setPlTranslation("Opis");
+		t55.setEnTranslation("Description");
+		session.save(t55);
+
+		Translation t56 = new Translation();
+		t56.setKey("scheduleOrder");
+		t56.setPlTranslation("Utwórz harmonogram");
+		t56.setEnTranslation("Create schedule");
+		session.save(t56);
+
+		Translation t57 = new Translation();
+		t57.setKey("app.submit");
+		t57.setPlTranslation("Wyślij");
+		t57.setEnTranslation("Submit");
+		session.save(t57);
+
+		Translation t58 = new Translation();
+		t58.setKey("app.cancel");
+		t58.setPlTranslation("Anuluj");
+		t58.setEnTranslation("Cancel");
+		session.save(t58);
+
+		Translation t59 = new Translation();
+		t59.setKey("homeTitle");
+		t59.setPlTranslation("TimeTablePK");
+		t59.setEnTranslation("TimeTablePK");
+		session.save(t59);
+
+		Translation t60 = new Translation();
+		t60.setKey("loginTitle");
+		t60.setPlTranslation("Strona logowania");
+		t60.setEnTranslation("Login page");
+		session.save(t60);
+
+		Translation t61 = new Translation();
+		t61.setKey("courseTitle");
+		t61.setPlTranslation("Zajęcia");
+		t61.setEnTranslation("Courses");
+		session.save(t61);
+
+		Translation t62 = new Translation();
+		t62.setKey("menuTitle");
+		t62.setPlTranslation("Menu");
+		t62.setEnTranslation("Menu");
+		session.save(t62);
+
+		Translation t63 = new Translation();
+		t63.setKey("roomTitle");
+		t63.setPlTranslation("Sale");
+		t63.setEnTranslation("Rooms");
+		session.save(t63);
+
+		Translation t64 = new Translation();
+		t64.setKey("scheduleTitle");
+		t64.setPlTranslation("Harmonogram");
+		t64.setEnTranslation("Schedule");
+		session.save(t64);
+
+		Translation t65 = new Translation();
+		t65.setKey("teacherTitle");
+		t65.setPlTranslation("Wykładowcy");
+		t65.setEnTranslation("Teachers");
+		session.save(t65);
+
+		Translation t66 = new Translation();
+		t66.setKey("translationTitle");
+		t66.setPlTranslation("Tłumaczenia");
+		t66.setEnTranslation("Translations");
+		session.save(t66);
+
+		Translation t67 = new Translation();
+		t67.setKey("groupTitle");
+		t67.setPlTranslation("Grupy");
+		t67.setEnTranslation("Groups");
+		session.save(t67);
+
+		Translation t68 = new Translation();
+		t68.setKey("unitTitle");
+		t68.setPlTranslation("Jednostki");
+		t68.setEnTranslation("Units");
+		session.save(t68);
+
+		Translation t69 = new Translation();
+		t69.setKey("userTitle");
+		t69.setPlTranslation("Użytkownicy");
+		t69.setEnTranslation("Users");
+		session.save(t69);
+
+		Translation t70 = new Translation();
+		t70.setKey("app.addNew");
+		t70.setPlTranslation("Dodaj");
+		t70.setEnTranslation("Add");
+		session.save(t70);
+
 		// Translation t71 = new Translation();
 		// t71.setKey(key);
 		// t71.setPlTranslation(plTranslation);
@@ -535,6 +529,21 @@ public class RealDataTest extends TestCase {
 		m1.setAddress("/timetablepk");
 		m1.setTranslation(t1);
 		session.save(m1);
+		
+		Translation t24 = new Translation();
+		t24.setKey("menu.schedule");
+		t24.setPlTranslation("Harmonogram");
+		t24.setEnTranslation("Schedule");
+		session.save(t24);
+		
+		Menu m25 = new Menu();
+		m25.setPosition(1);
+		m25.setMenuPosition(MenuPosition.TOP);
+		m25.setName("Schedules");
+		m25.setAddress("/timetablepk/schedule");
+		m25.setTranslation(t24);
+		m25.setRole(UserAppRole.USER);
+		session.save(m25);
 
 		Translation t2 = new Translation();
 		t2.setKey("menu.pk");
@@ -543,7 +552,7 @@ public class RealDataTest extends TestCase {
 		session.save(t2);
 
 		Menu m2 = new Menu();
-		m2.setPosition(1);
+		m2.setPosition(2);
 		m2.setMenuPosition(MenuPosition.TOP);
 		m2.setName("Politechnika Krakowska");
 		m2.setAddress("http://www.pk.edu.pl");
@@ -557,7 +566,7 @@ public class RealDataTest extends TestCase {
 		session.save(t3);
 
 		Menu m3 = new Menu();
-		m3.setPosition(2);
+		m3.setPosition(3);
 		m3.setMenuPosition(MenuPosition.TOP);
 		m3.setName("WFMIIS");
 		m3.setAddress("http://www.wfmiis.pk.edu.pl/");
@@ -571,7 +580,7 @@ public class RealDataTest extends TestCase {
 		session.save(t6);
 
 		Menu m6 = new Menu();
-		m6.setPosition(3);
+		m6.setPosition(4);
 		m6.setMenuPosition(MenuPosition.TOP);
 		m6.setName("Google");
 		m6.setAddress("http://www.google.pl");
@@ -585,7 +594,7 @@ public class RealDataTest extends TestCase {
 		session.save(t23);
 
 		Menu m23 = new Menu();
-		m23.setPosition(4);
+		m23.setPosition(5);
 		m23.setMenuPosition(MenuPosition.TOP);
 		m23.setName("Add Translation");
 		m23.setAddress("/timetablepk/logout");
@@ -738,6 +747,15 @@ public class RealDataTest extends TestCase {
 		m16.setTranslation(t16);
 		session.save(m16);
 
+		Menu m24 = new Menu();
+		m24.setPosition(10);
+		m24.setMenuPosition(MenuPosition.MAIN);
+		m24.setName("Schedules");
+		m24.setAddress("/timetablepk/schedule");
+		m24.setTranslation(t24);
+		m24.setRole(UserAppRole.USER);
+		session.save(m24);
+
 		Translation t17 = new Translation();
 		t17.setKey("menu.users");
 		t17.setPlTranslation("Użytkownicy");
@@ -745,7 +763,7 @@ public class RealDataTest extends TestCase {
 		session.save(t17);
 
 		Menu m17 = new Menu();
-		m17.setPosition(10);
+		m17.setPosition(11);
 		m17.setMenuPosition(MenuPosition.MAIN);
 		m17.setName("User");
 		m17.setAddress("/timetablepk/users");
@@ -760,7 +778,7 @@ public class RealDataTest extends TestCase {
 		session.save(t18);
 
 		Menu m18 = new Menu();
-		m18.setPosition(11);
+		m18.setPosition(12);
 		m18.setMenuPosition(MenuPosition.MAIN);
 		m18.setName("Add User");
 		m18.setAddress("/timetablepk/user/add");
@@ -776,7 +794,7 @@ public class RealDataTest extends TestCase {
 		session.save(t19);
 
 		Menu m19 = new Menu();
-		m19.setPosition(12);
+		m19.setPosition(13);
 		m19.setMenuPosition(MenuPosition.MAIN);
 		m19.setName("Menus");
 		m19.setAddress("/timetablepk/menus");
@@ -791,7 +809,7 @@ public class RealDataTest extends TestCase {
 		session.save(t20);
 
 		Menu m20 = new Menu();
-		m20.setPosition(13);
+		m20.setPosition(14);
 		m20.setMenuPosition(MenuPosition.MAIN);
 		m20.setName("Add Menu");
 		m20.setAddress("/timetablepk/menu/add");
@@ -807,7 +825,7 @@ public class RealDataTest extends TestCase {
 		session.save(t21);
 
 		Menu m21 = new Menu();
-		m21.setPosition(14);
+		m21.setPosition(15);
 		m21.setMenuPosition(MenuPosition.MAIN);
 		m21.setName("Translations");
 		m21.setAddress("/timetablepk/translations");
@@ -822,7 +840,7 @@ public class RealDataTest extends TestCase {
 		session.save(t22);
 
 		Menu m22 = new Menu();
-		m22.setPosition(15);
+		m22.setPosition(16);
 		m22.setMenuPosition(MenuPosition.MAIN);
 		m22.setName("Add Translation");
 		m22.setAddress("/timetablepk/translation/add");

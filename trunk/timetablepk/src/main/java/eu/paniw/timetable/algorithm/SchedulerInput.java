@@ -1,17 +1,48 @@
 package eu.paniw.timetable.algorithm;
 
-import eu.paniw.timetable.domain.entity.*;
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
+import net.databinder.models.hib.HibernateListModel;
+import eu.paniw.timetable.domain.entity.BeginTimes;
+import eu.paniw.timetable.domain.entity.Course;
+import eu.paniw.timetable.domain.entity.Room;
+import eu.paniw.timetable.domain.entity.Teacher;
+import eu.paniw.timetable.domain.entity.UnitDef;
 
 public class SchedulerInput {
-	private List<UnitDef> units = new ArrayList<UnitDef>();
-	private List<Course> courses = new ArrayList<Course>();
-	private List<Room> rooms = new ArrayList<Room>();
-	private List<Teacher> teachers = new ArrayList<Teacher>();
-	private int maxRowsAtDay = 0;
-	private List<String> beginTimes = new ArrayList<String>();
-	private boolean randomInput = false;
+	private List<UnitDef> units;
+	private List<Course> courses;
+	private List<Room> rooms;
+	private List<Teacher> teachers;
+	private int maxRowsAtDay = 5;
+	private List<String> beginTimes;
+	private Boolean randomInput = false;
+
+	public SchedulerInput() {
+		this(5);
+	}
+
+	public SchedulerInput(int maxRowsAtDay) {
+		this(maxRowsAtDay, false);
+	}
+
+	public SchedulerInput(int maxRowsAtDay, Boolean randomInput) {
+		this.maxRowsAtDay = maxRowsAtDay;
+		this.randomInput = randomInput;
+		init();
+	}
+
+	private void init() {
+		units = new HibernateListModel<UnitDef>(UnitDef.class).getObject();
+		courses = new HibernateListModel<Course>(Course.class).getObject();
+		rooms = new HibernateListModel<Room>(Room.class).getObject();
+		teachers = new HibernateListModel<Teacher>(Teacher.class).getObject();
+
+		beginTimes = new ArrayList<String>();
+		for(BeginTimes bt : BeginTimes.values()) {
+			beginTimes.add(bt.getBeginTime());
+		}
+	}
 
 	public boolean isRandomInput() {
 		return randomInput;

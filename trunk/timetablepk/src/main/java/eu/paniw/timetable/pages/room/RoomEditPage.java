@@ -15,7 +15,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountMixedParam(parameterNames = {"id"})
 public class RoomEditPage extends EditPage<Room> {
 	public RoomEditPage(PageParameters param) {
-		super(param, Room.class, RoomViewPage.class, RoomListPage.class);
+		super(param, "roomTitle", Room.class, RoomViewPage.class, RoomListPage.class);
 		init();
 	}
 

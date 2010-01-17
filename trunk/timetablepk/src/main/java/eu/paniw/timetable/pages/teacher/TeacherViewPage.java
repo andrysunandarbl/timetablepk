@@ -12,7 +12,7 @@ import eu.paniw.timetable.pages.ViewPage;
 @MountMixedParam(parameterNames = {"id"})
 public class TeacherViewPage extends ViewPage<Teacher> {
 	public TeacherViewPage(PageParameters param) {
-		super(param, Teacher.class, TeacherListPage.class, TeacherEditPage.class);
+		super(param, "teacherTitle", Teacher.class, TeacherListPage.class, TeacherEditPage.class);
 		init();
 	}
 
@@ -29,7 +29,7 @@ public class TeacherViewPage extends ViewPage<Teacher> {
 		Label firstnameL = new Label("item", new PropertyModel<String>(hom, "firstname"));
 		builder.addComponent(firstnameL, "teacher.firstname");
 
-		Label surnameL = new Label("item", new PropertyModel<String>(hom, "surnameL"));
-		builder.addComponent(surnameL, "teacher.surnameL");
+		Label surnameL = new Label("item", new PropertyModel<String>(hom, "surname"));
+		builder.addComponent(surnameL, "teacher.surname");
 	}
 }

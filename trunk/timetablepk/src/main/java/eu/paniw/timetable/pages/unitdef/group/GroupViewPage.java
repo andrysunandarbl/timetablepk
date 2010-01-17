@@ -12,7 +12,7 @@ import eu.paniw.timetable.pages.unitdef.UnitDefViewPage;
 @MountMixedParam(parameterNames = {"id"})
 public class GroupViewPage extends UnitDefViewPage<Group> {
 	public GroupViewPage(PageParameters param) {
-		super(param, Group.class, GroupListPage.class, GroupEditPage.class);
+		super(param, "groupTitle", Group.class, GroupListPage.class, GroupEditPage.class);
 		init();
 	}
 

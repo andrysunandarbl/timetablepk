@@ -21,7 +21,7 @@ import eu.paniw.timetable.tool.PageParametersTool;
 @MountPath(path = "teacher", alt = "teachers")
 public class TeacherListPage extends ListPage<Teacher> {
 	public TeacherListPage(PageParameters param) {
-		super(param, Teacher.class);
+		super(param, "teacherTitle", Teacher.class, TeacherEditPage.class);
 		init();
 	}
 

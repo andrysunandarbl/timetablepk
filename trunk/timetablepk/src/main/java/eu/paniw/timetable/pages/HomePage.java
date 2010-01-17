@@ -8,7 +8,6 @@ import org.wicketstuff.annotation.mount.MountPath;
 @AuthorizeInstantiation("USER")
 public class HomePage extends BasePage {
 	public HomePage(PageParameters param) {
-		super(param);
-
+		super(param, "homeTitle");
 	}
 }

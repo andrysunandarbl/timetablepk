@@ -1,48 +1,66 @@
 package eu.paniw.timetable.domain.entity;
 
-import java.util.HashMap;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 import eu.paniw.timetable.algorithm.SchedulerAlgorithm;
 
-public class Schedule {
-	private HashMap<Day, ScheduleDay> schedule;
+@Entity
+public class Schedule implements Serializable {
+	private static final long serialVersionUID = 8158459654031121191L;
+	private Long id;
+	private String name;
+	private String description;
+	private List<ScheduleDay> scheduleDays = new ArrayList<ScheduleDay>();
 
-	private Schedule() {
-		schedule = new HashMap<Day, ScheduleDay>();
-		for(Day day : Day.values()) {
-			schedule.put(day, new ScheduleDay());
-		}
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
 	}
 
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@OneToMany(cascade = CascadeType.ALL)
+	public List<ScheduleDay> getScheduleDays() {
+		return scheduleDays;
+	}
+
+	public void setScheduleDays(List<ScheduleDay> scheduleDays) {
+		this.scheduleDays = scheduleDays;
+	}
+
+	@Transient
 	public static Schedule create(SchedulerAlgorithm algorithm) throws Exception {
 		return algorithm.generate();
 	}
 
+	@Transient
 	public static Schedule create() {
 		return new Schedule();
-	}
-
-	public HashMap<Day, ScheduleDay> getSchedule() {
-		return schedule;
-	}
-
-	public ScheduleDay get(Day day) {
-		ScheduleDay sday = schedule.get(day);
-		if(sday == null) {
-			sday = new ScheduleDay();
-			schedule.put(day, sday);
-		}
-		return sday;
-	}
-
-	public void set(Day day, ScheduleDay sday) {
-		schedule.put(day, sday);
-	}
-
-	public void add(Day day, ScheduleDay sday) {
-		schedule.put(day, sday);
-	}
-
-	public void clear() {
-		schedule.clear();
 	}
 }

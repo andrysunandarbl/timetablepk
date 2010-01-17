@@ -30,6 +30,7 @@ public class MenuLoader {
 		menuTop.setRenderBodyOnly(true);
 		for(Menu m : topMenus) {
 			MenuPanel mp = new MenuPanel(menuTop.newChildId(), m);
+			mp.setRenderBodyOnly(true);
 			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
 			menuTop.add(mp);
 		}
@@ -40,6 +41,7 @@ public class MenuLoader {
 		menuMain.setRenderBodyOnly(true);
 		for(Menu m : mainMenus) {
 			MenuPanel mp = new MenuPanel(menuMain.newChildId(), m);
+			mp.setRenderBodyOnly(true);
 			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
 			menuMain.add(mp);
 		}
@@ -50,6 +52,7 @@ public class MenuLoader {
 		menuBottom.setRenderBodyOnly(true);
 		for(Menu m : bottomMenus) {
 			MenuPanel mp = new MenuPanel(menuBottom.newChildId(), m);
+			mp.setRenderBodyOnly(true);
 			MetaDataRoleAuthorizationStrategy.authorize(mp, Component.RENDER, m.getRole().name());
 			menuBottom.add(mp);
 		}

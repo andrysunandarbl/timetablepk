@@ -1,13 +1,25 @@
 <wicket:panel>
 
-<table>
-	<span wicket:id="builder">
-		<span wicket:id="item"></span>
-	</span>
+<table class="formBuilder">
 	<tr>
 		<td>
-			<input wicket:id="submit" type="submit" />
-			<input wicket:id="cancel" type="submit" />
+			<table class="formBuilderItems">
+				<span wicket:id="builder">
+					<span wicket:id="item"></span>
+				</span>
+			</table>
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<table class="formBuilderButtons">
+				<tr>
+					<td>
+						<input wicket:id="submit" type="submit" />
+						<input wicket:id="cancel" type="submit" />
+					</td>
+				</tr>
+			</table>
 		</td>
 	</tr>
 </table>

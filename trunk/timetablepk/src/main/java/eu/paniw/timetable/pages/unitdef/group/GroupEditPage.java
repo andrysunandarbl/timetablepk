@@ -15,7 +15,7 @@ import eu.paniw.timetable.pages.unitdef.UnitDefEditPage;
 @MountMixedParam(parameterNames = {"id"})
 public class GroupEditPage extends UnitDefEditPage<Group> {
 	public GroupEditPage(PageParameters param) {
-		super(param, Group.class, GroupViewPage.class, GroupListPage.class);
+		super(param, "groupTitle", Group.class, GroupViewPage.class, GroupListPage.class);
 		init();
 	}
 
@@ -23,7 +23,7 @@ public class GroupEditPage extends UnitDefEditPage<Group> {
 	protected void init() {
 		super.init();
 
-		DropDownChoice<Unit> parentDDC = new DropDownChoice<Unit>("item", new PropertyModel<Unit>(getFormModel(), "count"),
+		DropDownChoice<Unit> parentDDC = new DropDownChoice<Unit>("item", new PropertyModel<Unit>(getFormModel(), "parent"),
 				new HibernateListModel<Unit>(Unit.class), new ChoiceRenderer<Unit>("unifyName", "id"));
 		builder.addComponent(parentDDC, "group.parent");
 	}

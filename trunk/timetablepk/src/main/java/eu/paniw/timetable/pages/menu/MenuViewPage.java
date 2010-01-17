@@ -1,6 +1,7 @@
 package eu.paniw.timetable.pages.menu;
 
 import org.apache.wicket.PageParameters;
+import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.PropertyModel;
 import org.wicketstuff.annotation.mount.MountPath;
@@ -10,9 +11,10 @@ import eu.paniw.timetable.pages.ViewPage;
 
 @MountPath(path = "menu/view")
 @MountMixedParam(parameterNames = {"id"})
+@AuthorizeInstantiation("ADMIN")
 public class MenuViewPage extends ViewPage<Menu> {
 	public MenuViewPage(PageParameters param) {
-		super(param, Menu.class, MenuListPage.class, MenuEditPage.class);
+		super(param, "menuTitle", Menu.class, MenuListPage.class, MenuEditPage.class);
 		init();
 	}
 

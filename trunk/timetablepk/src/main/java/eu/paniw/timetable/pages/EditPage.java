@@ -2,13 +2,14 @@ package eu.paniw.timetable.pages;
 
 import java.io.Serializable;
 import net.databinder.models.hib.HibernateObjectModel;
+import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Page;
 import org.apache.wicket.PageParameters;
 import org.apache.wicket.RestartResponseAtInterceptPageException;
 import org.apache.wicket.authorization.strategies.role.annotations.AuthorizeInstantiation;
-import org.apache.wicket.behavior.SimpleAttributeModifier;
 import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.link.Link;
+import org.apache.wicket.model.ResourceModel;
 import eu.paniw.timetable.Application;
 import eu.paniw.timetable.panel.FormBuilder;
 
@@ -21,14 +22,14 @@ public abstract class EditPage<T extends Serializable> extends BasePage {
 	protected FormBuilder<T> builder;
 	protected PageParameters responseParam;
 
-	public EditPage(PageParameters param, Class<T> clazz, Class<? extends Page> responseAfterSave,
+	public EditPage(PageParameters param, String titleKey, Class<T> clazz, Class<? extends Page> responseAfterSave,
 			Class<? extends Page> responseAfterCancel) {
-		this(param, clazz, responseAfterSave, responseAfterCancel, null);
+		this(param, titleKey, clazz, responseAfterSave, responseAfterCancel, null);
 	}
 
-	public EditPage(PageParameters param, Class<T> clazz, Class<? extends Page> responseAfterSave,
+	public EditPage(PageParameters param, String titleKey, Class<T> clazz, Class<? extends Page> responseAfterSave,
 			Class<? extends Page> responseAfterCancel, PageParameters responseParam) {
-		super(param);
+		super(param, titleKey);
 
 		this.clazz = clazz;
 		this.responseAfterSave = responseAfterSave;
@@ -56,10 +57,13 @@ public abstract class EditPage<T extends Serializable> extends BasePage {
 			@Override
 			protected void onSubmit() {
 				EditPage.this.onBeforeSubmit();
-				super.onSubmit();
-				EditPage.this.onAfterSubmit();
 
-				setResponsePage(responseAfterSave, responseParam);
+				if(!EditPage.this.hasErrorMessage()) {
+					super.onSubmit();
+					EditPage.this.onAfterSubmit();
+
+					setResponsePage(responseAfterSave, responseParam);
+				}
 			}
 
 		};
@@ -73,7 +77,7 @@ public abstract class EditPage<T extends Serializable> extends BasePage {
 				super.onSubmit();
 			}
 		};
-		submit.add(new SimpleAttributeModifier("value", "Submit"));
+		submit.add(new AttributeModifier("value", true, new ResourceModel("app.submit", "app.submit")));
 		builder.addButton(submit);
 
 		Link<T> cancel = new Link<T>("cancel") {
@@ -84,7 +88,7 @@ public abstract class EditPage<T extends Serializable> extends BasePage {
 				setResponsePage(responseAfterCancel);
 			}
 		};
-		cancel.add(new SimpleAttributeModifier("value", "Cancel"));
+		cancel.add(new AttributeModifier("value", true, new ResourceModel("app.cancel", "app.cancel")));
 		builder.addButton(cancel);
 	}
 

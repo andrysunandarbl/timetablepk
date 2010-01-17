@@ -8,13 +8,13 @@ import eu.paniw.timetable.TimeTableSession;
 @MountPath(path = "logout")
 public class LogoutPage extends BasePage {
 	public LogoutPage(PageParameters param) {
-		super(param);
-		
+		super(param, "Logout");
+
 		if((TimeTableSession) getSession() != null) {
 			((TimeTableSession) getSession()).setUser(null);
 			((TimeTableSession) getSession()).invalidateNow();
 		}
-		
+
 		throw new RestartResponseAtInterceptPageException(LoginPage.class);
 	}
 }
