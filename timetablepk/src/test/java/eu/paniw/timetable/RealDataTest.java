@@ -495,6 +495,12 @@ public class RealDataTest extends TestCase {
 		t70.setEnTranslation("Add");
 		session.save(t70);
 
+		Translation t71 = new Translation();
+		t71.setKey("scheduleRandomization");
+		t71.setPlTranslation("Losowość");
+		t71.setEnTranslation("Randomness");
+		session.save(t71);
+		
 		// Translation t71 = new Translation();
 		// t71.setKey(key);
 		// t71.setPlTranslation(plTranslation);
