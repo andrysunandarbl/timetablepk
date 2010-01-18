@@ -1,4 +1,13 @@
 <wicket:panel>
 	<div class="dayName"><span wicket:id="dayName" /></div>
-	<table wicket:id="rowRV" class="rowTable"></table>
+	<table class="rowTable">
+		<tr>
+			<th style="width: 50px"><wicket:message key="beginTime">beginTime</wicket:message></th>
+			<th style="width: 200px"><wicket:message key="course">course</wicket:message></th>
+			<th style="width: 25px"><wicket:message key="room">room</wicket:message></th>
+			<th style="width: 200px"><wicket:message key="teacher">teacher</wicket:message></th>
+			<th style="width: 70px"><wicket:message key="unit">unit</wicket:message></th>
+		</tr>
+		<span wicket:id="rowRV" />
+	</table>
 </wicket:panel>

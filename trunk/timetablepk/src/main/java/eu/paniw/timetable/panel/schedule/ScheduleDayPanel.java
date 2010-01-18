@@ -19,10 +19,12 @@ public class ScheduleDayPanel extends Panel {
 		add(dayNameL);
 
 		RepeatingView rv = new RepeatingView("rowRV");
+		rv.setRenderBodyOnly(true);
 		add(rv);
 
 		for(ScheduleRow row : sd.getRows()) {
 			ScheduleRowPanel rowPanel = new ScheduleRowPanel(rv.newChildId(), row);
+			rowPanel.setRenderBodyOnly(true);
 			rv.add(rowPanel);
 		}
 	}

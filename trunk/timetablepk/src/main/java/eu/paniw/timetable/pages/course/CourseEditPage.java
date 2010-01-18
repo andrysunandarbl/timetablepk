@@ -35,7 +35,7 @@ public class CourseEditPage extends EditPage<Course> {
 		builder.addComponent(nameTF, "course.name");
 
 		CheckBox lectureCB = new CheckBox("item", new PropertyModel<Boolean>(getFormModel(), "lecture"));
-		builder.addComponent(lectureCB,"course.lecture");
+		builder.addComponent(lectureCB, "course.lecture");
 
 		Palette<UnitDef> unitsP = new Palette<UnitDef>("item", new PropertyModel<List<UnitDef>>(getFormModel(), "units"),
 				new HibernateListModel<UnitDef>(UnitDef.class), new ChoiceRenderer<UnitDef>("unifyName", "id"), 5, false);

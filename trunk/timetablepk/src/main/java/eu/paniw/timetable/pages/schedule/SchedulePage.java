@@ -29,7 +29,7 @@ public class SchedulePage extends BasePage {
 	private String scheduleName;
 	private String scheduleDescription;
 	private Boolean scheduleRandomization;
-	
+
 	public SchedulePage(PageParameters param) {
 		super(param, "scheduleTitle");
 		init();
@@ -52,7 +52,7 @@ public class SchedulePage extends BasePage {
 
 		CheckBox randomCB = new CheckBox("scheduleRandomization", new PropertyModel<Boolean>(this, "scheduleRandomization"));
 		formSchedule.add(randomCB);
-		
+
 		Button scheduleOrder = new Button("scheduleOrder") {
 			private static final long serialVersionUID = 8354044262314174400L;
 
@@ -68,6 +68,8 @@ public class SchedulePage extends BasePage {
 				session.beginTransaction();
 				session.save(schedule);
 				session.getTransaction().commit();
+				
+				getSession().info(getString("scheduleCreate", null, "scheduleCreate"));
 
 				setResponsePage(SchedulePage.class);
 			}
@@ -81,7 +83,7 @@ public class SchedulePage extends BasePage {
 
 		scheduleList = new HibernateListModel<Schedule>(Schedule.class).getObject();
 		for(Schedule s : scheduleList) {
-			SchedulePanel sp = new SchedulePanel(rv.newChildId(), s);
+			SchedulePanel sp = new SchedulePanel(rv.newChildId(), s, SchedulePage.this);
 			sp.setRenderBodyOnly(true);
 			rv.add(sp);
 		}

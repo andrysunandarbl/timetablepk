@@ -115,7 +115,8 @@ div#menu a.main:hover {
 	text-decoration: underline;
 }
 
-div#menu a.second:link,div#menu a.second:visited,div#menu a.second:active {
+div#menu a.second:link,div#menu a.second:visited,div#menu a.second:active
+	{
 	color: #002A3D;
 	text-decoration: none;
 	font-weight: bold;
@@ -150,7 +151,7 @@ div#bottom {
 
 .feedbackPanelERROR {
 	color: red;
-	font-weight: bold;	
+	font-weight: bold;
 }
 
 /* for table */
@@ -346,7 +347,7 @@ table.palette td.pane select {
 	height: 100px;
 }
 
-table.palette td.buttons { 
+table.palette td.buttons {
 	text-align: center;
 	padding-left: 5px;
 	padding-right: 5px;
@@ -356,8 +357,8 @@ table.palette td.buttons button {
 	width: 40px;
 	height: 40px;
 }
-/* for palette end */
 
+/* for palette end */
 table.rowTable {
 	clear: both;
 	float: left;
@@ -366,13 +367,22 @@ table.rowTable {
 	margin-left: 1px;
 }
 
-table.rowTable, table.rowTable * {
+table.rowTable,table.rowTable * {
 	border: 1px dotted #3c567c;
 	background-color: #FFFFFF;
 }
 
-table.rowTable, table.rowTable {
+table.rowTable,table.rowTable {
 	text-align: left;
+}
+
+table.rowTable th {
+	text-align: center;
+}
+
+table.rowTable th * {
+	border: 0px;
+	font-size: 10px;
 }
 
 div.dayName {
@@ -401,7 +411,7 @@ div.schedule {
 	margin-top: 40px;
 }
 
-a.listLink:link, a.listLink:visited, a.listLink:active {
+a.listLink:link,a.listLink:visited,a.listLink:active {
 	color: #000000;
 	font-size: 10px;
 	text-decoration: none;
@@ -416,7 +426,7 @@ a.listLink:hover {
 	margin-right: 7px;
 }
 
-a.addNew:link, a.addNew:visited, a.addNew:active {
+a.addNew:link,a.addNew:visited,a.addNew:active {
 	color: #002A3D;
 	font-size: 11px;
 	text-decoration: none;
@@ -432,7 +442,7 @@ a.addNew:hover {
 	margin-left: 14px;
 }
 
-a.lang:link, a.lang:visited, a.lang:active {
+a.lang:link,a.lang:visited,a.lang:active {
 	color: #FFFFFF;
 	font-size: 9px;
 	font-weight: normal;
