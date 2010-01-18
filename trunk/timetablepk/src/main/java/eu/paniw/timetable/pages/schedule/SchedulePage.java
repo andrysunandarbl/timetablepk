@@ -38,7 +38,7 @@ public class SchedulePage extends BasePage {
 	protected void init() {
 		manager = new ScheduleManager();
 
-		Form<Schedule> formSchedule = new Form<Schedule>("scheduleForm");
+		final Form<Schedule> formSchedule = new Form<Schedule>("scheduleForm");
 		add(formSchedule);
 
 		TextField<String> scheduleNameField = new TextField<String>("scheduleName", new PropertyModel<String>(this,
@@ -61,17 +61,21 @@ public class SchedulePage extends BasePage {
 				super.onSubmit();
 
 				Schedule schedule = manager.order(scheduleRandomization);
-				schedule.setName(scheduleName);
-				schedule.setDescription(scheduleDescription);
+				if(schedule != null) {
+					schedule.setName(scheduleName);
+					schedule.setDescription(scheduleDescription);
 
-				Session session = Databinder.getHibernateSession();
-				session.beginTransaction();
-				session.save(schedule);
-				session.getTransaction().commit();
-				
-				getSession().info(getString("scheduleCreate", null, "scheduleCreate"));
+					Session session = Databinder.getHibernateSession();
+					session.beginTransaction();
+					session.save(schedule);
+					session.getTransaction().commit();
 
-				setResponsePage(SchedulePage.class);
+					getSession().info(getString("scheduleCreate", null, "scheduleCreate"));
+
+					setResponsePage(SchedulePage.class);
+				} else {
+					formSchedule.error(getString("scheduleError", null, "scheduleError"));
+				}
 			}
 		};
 		scheduleOrder.add(new AttributeModifier("value", true, new ResourceModel("scheduleOrder", "scheduleOrder")));

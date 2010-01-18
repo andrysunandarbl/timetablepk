@@ -564,6 +564,12 @@ public class RealDataTest extends TestCase {
 		t81
 				.setEnTranslation("Created schedules can be viewed on the 'Schedules' page (at this place also Schedule can be exported to XLS file).");
 		session.save(t81);
+		
+		Translation t82 = new Translation();
+		t82.setKey("scheduleError");
+		t82.setPlTranslation("Błąd podczas układania planu! Proszę spróbować jeszcze raz!");
+		t82.setEnTranslation("Error while laying a plan! Please try again!");
+		session.save(t82);
 	}
 
 	private void addMenus() {
