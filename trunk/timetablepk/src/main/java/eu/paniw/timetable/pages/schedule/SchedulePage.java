@@ -10,6 +10,7 @@ import org.apache.wicket.markup.html.form.Button;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
+import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
@@ -27,7 +28,8 @@ public class SchedulePage extends BasePage {
 	private List<Schedule> scheduleList;
 	private String scheduleName;
 	private String scheduleDescription;
-
+	private Boolean scheduleRandomization;
+	
 	public SchedulePage(PageParameters param) {
 		super(param, "scheduleTitle");
 		init();
@@ -48,6 +50,9 @@ public class SchedulePage extends BasePage {
 				this, "scheduleDescription"));
 		formSchedule.add(scheduleDescriptionField);
 
+		CheckBox randomCB = new CheckBox("scheduleRandomization", new PropertyModel<Boolean>(this, "scheduleRandomization"));
+		formSchedule.add(randomCB);
+		
 		Button scheduleOrder = new Button("scheduleOrder") {
 			private static final long serialVersionUID = 8354044262314174400L;
 
@@ -55,7 +60,7 @@ public class SchedulePage extends BasePage {
 			public void onSubmit() {
 				super.onSubmit();
 
-				Schedule schedule = manager.order();
+				Schedule schedule = manager.order(scheduleRandomization);
 				schedule.setName(scheduleName);
 				schedule.setDescription(scheduleDescription);
 
