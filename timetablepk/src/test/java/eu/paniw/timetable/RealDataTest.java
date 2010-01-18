@@ -425,8 +425,8 @@ public class RealDataTest extends TestCase {
 
 		Translation t59 = new Translation();
 		t59.setKey("homeTitle");
-		t59.setPlTranslation("TimeTablePK");
-		t59.setEnTranslation("TimeTablePK");
+		t59.setPlTranslation("Strona główna");
+		t59.setEnTranslation("Home page");
 		session.save(t59);
 
 		Translation t60 = new Translation();
@@ -500,24 +500,70 @@ public class RealDataTest extends TestCase {
 		t71.setPlTranslation("Losowość");
 		t71.setEnTranslation("Randomness");
 		session.save(t71);
-		
-		// Translation t71 = new Translation();
-		// t71.setKey(key);
-		// t71.setPlTranslation(plTranslation);
-		// t71.setEnTranslation(enTranslation);
-		// session.save(t71);
-		//		
-		// Translation t72 = new Translation();
-		// t72.setKey(key);
-		// t72.setPlTranslation(plTranslation);
-		// t72.setEnTranslation(enTranslation);
-		// session.save(t72);
-		//		
-		// Translation t73 = new Translation();
-		// t73.setKey(key);
-		// t73.setPlTranslation(plTranslation);
-		// t73.setEnTranslation(enTranslation);
-		// session.save(t73);
+
+		Translation t72 = new Translation();
+		t72.setKey("course");
+		t72.setPlTranslation("Zajęcia");
+		t72.setEnTranslation("Course");
+		session.save(t72);
+
+		Translation t73 = new Translation();
+		t73.setKey("room");
+		t73.setPlTranslation("Sala");
+		t73.setEnTranslation("Room");
+		session.save(t73);
+
+		Translation t74 = new Translation();
+		t74.setKey("teacher");
+		t74.setPlTranslation("Wykładowca");
+		t74.setEnTranslation("Teacher");
+		session.save(t74);
+
+		Translation t75 = new Translation();
+		t75.setKey("unit");
+		t75.setPlTranslation("Jednostka/Groupa");
+		t75.setEnTranslation("Unit/Group");
+		session.save(t75);
+
+		Translation t76 = new Translation();
+		t76.setKey("beginTime");
+		t76.setPlTranslation("Czas rozpoczęcia");
+		t76.setEnTranslation("Begin time");
+		session.save(t76);
+
+		Translation t77 = new Translation();
+		t77.setKey("exportToXls");
+		t77.setPlTranslation("Zapisz do pliku XLS");
+		t77.setEnTranslation("Save to XLS file");
+		session.save(t77);
+
+		Translation t78 = new Translation();
+		t78.setKey("scheduleCreate");
+		t78.setPlTranslation("Harmonogram został utworzony!");
+		t78.setEnTranslation("The schedule was created!");
+		session.save(t78);
+
+		Translation t79 = new Translation();
+		t79.setKey("homeWelcome");
+		t79.setPlTranslation("Witam na stronie programu TimeTable PK!");
+		t79.setEnTranslation("Welcome to the TimeTable PK!");
+		session.save(t79);
+
+		Translation t80 = new Translation();
+		t80.setKey("homeInfo1");
+		t80
+				.setPlTranslation("Aplikacja umożliwia tworzenie harmonogramu zajęć na podstawie podanych zajęć, grup, sal oraz wykładowców.");
+		t80
+				.setEnTranslation("The application allows you to create the schedule of classes on the basis of specified units, groups, rooms and teachers.");
+		session.save(t80);
+
+		Translation t81 = new Translation();
+		t81.setKey("homeInfo2");
+		t81
+				.setPlTranslation("Utworzone harmonogramy można przeglądać na stronie 'Harmonogramy' (w tym miejscu również można wyeksportować harmonogram do pliku XLS).");
+		t81
+				.setEnTranslation("Created schedules can be viewed on the 'Schedules' page (at this place also Schedule can be exported to XLS file).");
+		session.save(t81);
 	}
 
 	private void addMenus() {
@@ -535,13 +581,13 @@ public class RealDataTest extends TestCase {
 		m1.setAddress("/timetablepk");
 		m1.setTranslation(t1);
 		session.save(m1);
-		
+
 		Translation t24 = new Translation();
 		t24.setKey("menu.schedule");
 		t24.setPlTranslation("Harmonogram");
 		t24.setEnTranslation("Schedule");
 		session.save(t24);
-		
+
 		Menu m25 = new Menu();
 		m25.setPosition(1);
 		m25.setMenuPosition(MenuPosition.TOP);
