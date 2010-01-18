@@ -570,6 +570,12 @@ public class RealDataTest extends TestCase {
 		t82.setPlTranslation("Błąd podczas układania planu! Proszę spróbować jeszcze raz!");
 		t82.setEnTranslation("Error while laying a plan! Please try again!");
 		session.save(t82);
+		
+		Translation t83 = new Translation();
+		t83.setKey("scheduleMaxRow");
+		t83.setPlTranslation("Ilość wierszy");
+		t83.setEnTranslation("Row count");
+		session.save(t83);
 	}
 
 	private void addMenus() {

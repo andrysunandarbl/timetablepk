@@ -1,5 +1,6 @@
 package eu.paniw.timetable.pages.schedule;
 
+import java.util.Arrays;
 import java.util.List;
 import net.databinder.hib.Databinder;
 import net.databinder.models.hib.HibernateListModel;
@@ -11,6 +12,7 @@ import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.TextArea;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.markup.html.form.CheckBox;
+import org.apache.wicket.markup.html.form.DropDownChoice;
 import org.apache.wicket.markup.repeater.RepeatingView;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.ResourceModel;
@@ -19,6 +21,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 import eu.paniw.timetable.domain.entity.Schedule;
 import eu.paniw.timetable.pages.BasePage;
 import eu.paniw.timetable.panel.schedule.SchedulePanel;
+import java.lang.Integer;
 
 @MountPath(path = "schedule")
 @AuthorizeInstantiation("USER")
@@ -29,7 +32,8 @@ public class SchedulePage extends BasePage {
 	private String scheduleName;
 	private String scheduleDescription;
 	private Boolean scheduleRandomization;
-
+	private Integer scheduleMaxRow;
+	
 	public SchedulePage(PageParameters param) {
 		super(param, "scheduleTitle");
 		init();
@@ -53,14 +57,19 @@ public class SchedulePage extends BasePage {
 		CheckBox randomCB = new CheckBox("scheduleRandomization", new PropertyModel<Boolean>(this, "scheduleRandomization"));
 		formSchedule.add(randomCB);
 
+		List<Integer> maxRows = Arrays.asList(new Integer[] { 1,2,3,4,5,6,7,8});
+		DropDownChoice<Integer> maxRowsChoice=new DropDownChoice<Integer>("scheduleMaxRow", new PropertyModel<Integer>(this, "scheduleMaxRow"), maxRows);
+		maxRowsChoice.setRequired(true);
+		maxRowsChoice.setNullValid(false);
+		formSchedule.add(maxRowsChoice);
+		
 		Button scheduleOrder = new Button("scheduleOrder") {
 			private static final long serialVersionUID = 8354044262314174400L;
 
 			@Override
 			public void onSubmit() {
-				super.onSubmit();
-
-				Schedule schedule = manager.order(scheduleRandomization);
+				super.onSubmit();				
+				Schedule schedule = manager.order(scheduleRandomization,scheduleMaxRow.intValue());
 				if(schedule != null) {
 					schedule.setName(scheduleName);
 					schedule.setDescription(scheduleDescription);
