@@ -2,17 +2,31 @@
 	<form wicket:id="scheduleForm">
 	<table style="float: left; clear: both">
 		<tr>
-			<td style="width: 75px; text-align: right;"><wicket:message key="scheduleName">scheduleName</wicket:message>:</td>
+			<td style="width: 90px; text-align: right;"><wicket:message key="scheduleName">scheduleName</wicket:message>:</td>
 			<td style="width: 170px;"><input wicket:id="scheduleName"
 				type="text" /></td>
 		</tr>
 		<tr>
-			<td style="width: 75px; text-align: right;"><wicket:message key="scheduleDescription">scheduleDescription</wicket:message>:</td>
-			<td><textarea wicket:id="scheduleDescription" cols="18" rows="3"></textarea></td>
+			<td style="width: 90px; text-align: right;"><wicket:message key="scheduleDescription">scheduleDescription</wicket:message>:</td>
+			<td><textarea wicket:id="scheduleDescription" cols="50" rows="5"></textarea></td>
 		</tr>
 		<tr>
-			<td style="width: 75px; text-align: right;"><wicket:message key="scheduleRandomization">scheduleRandomization</wicket:message>:</td>
+			<td style="width: 90px; text-align: right;"><wicket:message key="scheduleRandomization">scheduleRandomization</wicket:message>:</td>
 			<td><input wicket:id="scheduleRandomization" type="checkbox" /></td>
+		</tr>
+		<tr>
+			<td style="width: 90px; text-align: right;"><wicket:message key="scheduleMaxRow">scheduleMaxRow</wicket:message>:</td>
+			<td>
+				<select wicket:id="scheduleMaxRow">
+					<option>1</option>
+					<option>2</option>
+					<option>3</option>
+					<option>4</option>
+					<option>5</option>
+					<option>7</option>
+					<option>8</option>
+				</select>
+			</td>
 		</tr>
 		<tr>
 			<td></td>

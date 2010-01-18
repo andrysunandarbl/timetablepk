@@ -13,13 +13,13 @@ public class ScheduleManager implements Serializable {
 	}
 
 	public Schedule order() {
-		return order(false);
+		return order(false, 5);
 	}
 
-	public Schedule order(Boolean randomization) {
+	public Schedule order(Boolean randomization, int maxRows) {
 		SchedulerInput input = new SchedulerInput();
 		input.setRandomInput(randomization);
-
+		input.setMaxRowsAtDay(maxRows);
 		SchedulerAlgorithm algorithm = new SimpleScheduler();
 		algorithm.initialize(input);
 
