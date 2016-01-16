@@ -1,0 +1,1 @@
+Service to create time tables for studies schedules using wicket with databinder.
